@@ -1,0 +1,150 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, lib, ... }:
+
+{
+  imports =
+    [ 
+      ./hardware-configuration.nix
+    ];
+
+  # Bootloader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/vda";
+  boot.loader.grub.useOSProber = true;
+
+  networking.hostName = "nixos"; # Define your hostname.
+
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  networking.networkmanager.enable = true;
+
+  time.timeZone = "Europe/Stockholm";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "sv_SE.UTF-8";
+    LC_IDENTIFICATION = "sv_SE.UTF-8";
+    LC_MEASUREMENT = "sv_SE.UTF-8";
+    LC_MONETARY = "sv_SE.UTF-8";
+    LC_NAME = "sv_SE.UTF-8";
+    LC_NUMERIC = "sv_SE.UTF-8";
+    LC_PAPER = "sv_SE.UTF-8";
+    LC_TELEPHONE = "sv_SE.UTF-8";
+    LC_TIME = "sv_SE.UTF-8";
+  };
+
+  services.xserver.enable = true;
+
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  services.xserver = {
+    xkb.layout = "se";
+    xkb.variant = "";
+  };
+
+  console.keyMap = "sv-latin1";
+
+  services.printing.enable = true;
+
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball {
+      url = "https://github.com/nix-community/NUR/archive/3a6a6f4da737da41e27922ce2cfacf68a109ebce.tar.gz";
+      sha256 = "04387gzgl8y555b3lkz9aiw9xsldfg4zmzp930m62qw8zbrvrshd";      
+    }) {
+      inherit pkgs;
+    };
+  };
+  users.users.emil = {
+    isNormalUser = true;
+    description = "emil";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
+    packages = with pkgs; [
+      slack
+      firefox
+      thunderbird
+      (
+        vscode-with-extensions.override {
+          vscodeExtensions = with pkgs.vscode-extensions; [
+            ms-python.python
+            ms-python.vscode-pylance
+            ms-python.black-formatter
+            vscode-icons-team.vscode-icons
+            hashicorp.terraform
+            batisteo.vscode-django
+            eamodio.gitlens
+            skellock.just
+            bbenoist.nix
+            esbenp.prettier-vscode
+          ];
+        }
+      )
+      telegram-desktop
+      fish
+      git
+      bat
+      duf
+      htop
+      comma
+      delta
+    ];
+  };
+
+  programs.dconf = {
+    enable = true;
+    profiles.user.databases = [
+      {
+        lockAll = true;
+        settings = {
+          "org/gnome/shell" = {
+            disabled-extensions = "";
+            enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
+          };
+          "org/gnome/shell/extensions/dash-to-dock" = {
+            dock-position = "LEFT";
+          };
+        };
+      }
+    ];
+  };
+
+  programs = {
+    fish = {
+      enable = true;
+      shellAbbrs = {
+        gpf = "git push --force-with-lease";
+        gca = "git commit --amend --no-edit";
+        gr  = "git rebase -i origin/main";
+        gpr = "git pull --rebase origin main";
+        gs  = "git switch";
+        py  = "django-admin shell_plus --quiet-load"; 
+        ax  = "aws-vault exec pk --";
+        cat = "bat";
+        rb  = "sudo nixos-rebuild switch --flake .#default";
+      };
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    wget
+    gnomeExtensions.dash-to-dock
+  ];
+
+  system.stateVersion = "23.05"; 
+
+}
