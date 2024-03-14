@@ -98,6 +98,7 @@
       htop
       comma
       delta
+      qflipper
     ];
   };
 
