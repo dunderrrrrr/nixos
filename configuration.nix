@@ -123,6 +123,13 @@
           };
           "org/gnome/desktop/wm/preferences".button-layout = "minimize,maximize,close";
           "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
+          # keybindings
+          "org/gnome/settings-daemon/plugins/media-keys" = {
+            custom-keybindings = [
+              "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+            ];
+          };
           "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
             name = "terminal";
             command = "kgx";
