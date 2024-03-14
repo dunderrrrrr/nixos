@@ -109,6 +109,7 @@
       {
         lockAll = true;
         settings = {
+          "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
           "org/gnome/shell" = {
             disabled-extensions = "";
             enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
