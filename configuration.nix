@@ -13,6 +13,7 @@
   networking.hostName = "nixos"; # Define your hostname.
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = [ "root" "emil" ];
 
   networking.networkmanager.enable = true;
 
