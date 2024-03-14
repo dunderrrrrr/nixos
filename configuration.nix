@@ -115,8 +115,13 @@
             disabled-extensions = "";
             enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
           };
-          "org/gnome/shell/extensions/dash-to-dock" = {
-            dock-position = "LEFT";
+          "org/gnome/shell/extensions/dash-to-dock".dock-position = "LEFT";
+          "org/gnome/desktop/wm/preferences".button-layout = "minimize,maximize,close";
+          "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+          "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+            name = "terminal";
+            command = "kgx";
+            binding = "<Ctrl><Alt>t";
           };
         };
       }
@@ -135,7 +140,7 @@
         py  = "django-admin shell_plus --quiet-load"; 
         ax  = "aws-vault exec pk --";
         cat = "bat";
-        rb  = "sudo nixos-rebuild switch --flake .#default";
+        nr  = "sudo nixos-rebuild switch --flake .#default";
       };
     };
   };
