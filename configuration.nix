@@ -87,6 +87,10 @@
             skellock.just
             bbenoist.nix
             esbenp.prettier-vscode
+            charliermarsh.ruff
+            stylelint.vscode-stylelint
+            dbaeumer.vscode-eslint
+            editorconfig.editorconfig
           ];
         }
       )
