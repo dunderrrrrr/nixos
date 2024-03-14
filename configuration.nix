@@ -98,6 +98,7 @@
       comma
       delta
       qflipper
+      direnv
     ];
   };
 
@@ -133,6 +134,7 @@
   programs = {
     fish = {
       enable = true;
+      interactiveShellInit = "direnv hook fish | source";
       shellAbbrs = {
         gpf = "git push --force-with-lease";
         gca = "git commit --amend --no-edit";
