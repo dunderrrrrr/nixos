@@ -111,7 +111,13 @@
             disabled-extensions = "";
             enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
           };
-          "org/gnome/shell/extensions/dash-to-dock".dock-position = "LEFT";
+          "org/gnome/shell/extensions/dash-to-dock" = {
+            dock-position = "LEFT";
+            dash-max-icon-size = "20";
+            extend-height = true;
+            custom-theme-shrink = true;
+            apply-custom-theme = true;
+          };
           "org/gnome/desktop/wm/preferences".button-layout = "minimize,maximize,close";
           "org/gnome/desktop/interface".color-scheme = "prefer-dark";
           "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
