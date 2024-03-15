@@ -137,8 +137,14 @@
       delta
       qflipper
       direnv
+      wget
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.vitals
+  ];  
 
   programs.dconf = {
     enable = true;
@@ -146,10 +152,16 @@
       {
         lockAll = true;
         settings = {
+          # extensions
           "org/gnome/shell" = {
             disabled-extensions = "";
-            enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
+            enabled-extensions = [
+              "dash-to-dock@micxgx.gmail.com"
+              "Vitals@CoreCoding.com"
+            ];
           };
+
+          # extensions config
           "org/gnome/shell/extensions/dash-to-dock" = {
             dock-position = "LEFT";
             dash-max-icon-size = "20";
@@ -157,6 +169,15 @@
             custom-theme-shrink = true;
             apply-custom-theme = true;
             show-icons-emblems = false;
+          };
+          "org/gnome/shell/extensions/vitals" = {
+            hot-sensors = [
+              "_memory_usage_"
+              "__network-rx_max__" 
+              "_processor_usage_" 
+              "_storage_free_"
+              "_temperature_acpi_thermal zone_"
+            ];
           };
 
           # desktop
@@ -199,11 +220,6 @@
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    wget
-    gnomeExtensions.dash-to-dock
-  ];
 
   system.stateVersion = "23.05"; 
 
