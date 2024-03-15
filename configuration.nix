@@ -155,6 +155,8 @@
           };
           "org/gnome/desktop/wm/preferences".button-layout = "minimize,maximize,close";
           "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+          "org/gnome/desktop/interface".show-battery-percentage = true;
+          "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
 
           # keybindings
           "org/gnome/settings-daemon/plugins/media-keys" = {
