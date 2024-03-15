@@ -42,6 +42,9 @@
     xkb.variant = "";
   };
 
+  # enabling yubikey support
+  services.pcscd.enable = true;
+
   console.keyMap = "sv-latin1";
 
   services.printing.enable = true;
