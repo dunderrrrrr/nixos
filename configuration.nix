@@ -91,6 +91,31 @@
             stylelint.vscode-stylelint
             dbaeumer.vscode-eslint
             editorconfig.editorconfig
+          ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+            {
+              name = "mypy-type-checker";
+              publisher = "ms-python";
+              version = "2023.6.0";
+              sha256 = "uL/iHtBX5sSnkM5fVlMRWEtspNcirirjp9O5ScW039c=";
+            }
+            {
+              name = "code-spell-checker";
+              publisher = "streetsidesoftware";
+              version = "3.0.1";
+              sha256 = "KeYE6/yO2n3RHPjnJOnOyHsz4XW81y9AbkSC/I975kQ=";
+            }   
+            {
+              name = "toml";
+              publisher = "be5invis";
+              version = "0.6.0";
+              sha256 = "yk7buEyQIw6aiUizAm+sgalWxUibIuP9crhyBaOjC2E=";
+            }
+            {
+              name = "vscode-direnv";
+              publisher = "rubymaniac";
+              version = "0.0.2";
+              sha256 = "TVvjKdKXeExpnyUh+fDPl+eSdlQzh7lt8xSfw1YgtL4=";
+            } 
           ];
         }
       )
