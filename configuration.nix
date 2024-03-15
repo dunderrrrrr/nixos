@@ -146,7 +146,6 @@
       {
         lockAll = true;
         settings = {
-          "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
           "org/gnome/shell" = {
             disabled-extensions = "";
             enabled-extensions = ["dash-to-dock@micxgx.gmail.com"];
@@ -157,11 +156,15 @@
             extend-height = true;
             custom-theme-shrink = true;
             apply-custom-theme = true;
+            show-icons-emblems = false;
           };
+
+          # desktop
           "org/gnome/desktop/wm/preferences".button-layout = "minimize,maximize,close";
           "org/gnome/desktop/interface".color-scheme = "prefer-dark";
           "org/gnome/desktop/interface".show-battery-percentage = true;
           "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
+          "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
 
           # keybindings
           "org/gnome/settings-daemon/plugins/media-keys" = {
