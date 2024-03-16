@@ -184,6 +184,7 @@
           "org/gnome/desktop/wm/preferences".button-layout = "minimize,maximize,close";
           "org/gnome/desktop/interface".color-scheme = "prefer-dark";
           "org/gnome/desktop/interface".show-battery-percentage = true;
+          "org/gnome/desktop/interface".clock-show-seconds = true;
           "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
           "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
 
