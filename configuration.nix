@@ -139,6 +139,7 @@
       direnv
       wget
       libreoffice
+      terminator
     ];
   };
 
@@ -197,7 +198,7 @@
           };
           "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
             name = "terminal";
-            command = "kgx";
+            command = "terminator";
             binding = "<Ctrl><Alt>t";
           };
         };
