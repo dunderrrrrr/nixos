@@ -138,6 +138,7 @@
       qflipper
       direnv
       wget
+      libreoffice
     ];
   };
 
