@@ -218,6 +218,7 @@
       ax  = "aws-vault exec pk --";
       cat = "bat";
       nr  = "sudo nixos-rebuild switch --flake .#default";
+      ns  = "nix-shell --command fish";
     };
   };
   system.stateVersion = "23.05"; 
