@@ -217,7 +217,8 @@
       py  = "django-admin shell_plus --quiet-load"; 
       ax  = "aws-vault exec pk --";
       cat = "bat";
-      nr  = "sudo nixos-rebuild switch --flake .#default";
+      nr  = "sudo nixos-rebuild switch --flake .#";
+      nc  = "sudo nix-collect-garbage --delete-older-than 15d";
       ns  = "nix-shell --command fish";
     };
   };
