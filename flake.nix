@@ -36,5 +36,19 @@
         }
       ];
     };
+    nixosConfigurations.public-www = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/public-www/configuration.nix
+        ./shared_configs/fish.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.emil = import ./hosts/public-www/home.nix;
+        }
+      ];
+    };
   };
 }
