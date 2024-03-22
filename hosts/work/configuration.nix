@@ -146,6 +146,8 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.dash-to-dock
     gnomeExtensions.vitals
+    alejandra
+    pre-commit
   ];  
 
   programs.dconf = {
