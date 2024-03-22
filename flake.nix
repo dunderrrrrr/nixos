@@ -26,6 +26,7 @@
         {nixpkgs.overlays = [nur.overlay];}
 
         ./hosts/work/configuration.nix
+        ./shared_configs/fish.nix
 
         home-manager.nixosModules.home-manager
         {
