@@ -50,5 +50,19 @@
         }
       ];
     };
+    nixosConfigurations.nixos-pelme = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/nixos-pelme/configuration.nix
+        ./shared_configs/fish.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.emil = import ./hosts/nixos-pelme/home.nix;
+        }
+      ];
+    };
   };
 }
