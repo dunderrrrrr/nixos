@@ -63,6 +63,11 @@
     home = "/home/andreas";
     description = "andreas";
     extraGroups = ["networkmanager" "wheel"];
+    openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9IToYPBU0BXbr4+ECrzqL0J4+2HzS+x6BC/Ej5zmfjSfXzVBW3YQI5KjHFCsx3vmO+b6oo07NHg1Xgt6MnSaVn/XS48Ny2QPyecZ17YYRmM9du76GwGARKRtApQKzLh3isk7eNl0i+Z8gRX1ZyeAkydFPN/mQ4qGF0b5qu0OicU7XkmLt4EsoJg4y7QfeLb14Ce3eHAcldeu+gzhkT2AnZh9REqRQdjaVcQquq3+jrCaSpR6qNhCsl5ONOlQ6C+IUcdrC7AO4T+tmxHnd9We7CNe6+GZFp90vnhiYYZSZjfDULB2V/Y76ojueQW2CwDqcCjX0tAr4wYGLlZ/g190N"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII1QxVMwB7DwjCq0lex5Ge++vD1AEairc9tg9ciflGFI"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIARRkX6xdDVF4nOAVEiN0/FIm8eC8XVKnQM6IxSNgssUAAAABHNzaDo="
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;
