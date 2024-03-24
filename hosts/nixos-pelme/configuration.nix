@@ -20,6 +20,7 @@
     enable = true;
     settings.PasswordAuthentication = true;
   };
+  services.tailscale.enable = true;
 
   networking.networkmanager.enable = true;
   networking.hostName = "nixos-pelme"; # Define your hostname.
@@ -67,6 +68,7 @@
   environment.systemPackages = with pkgs; [
     git
     htop
+    tailscale
   ];
 
   system.stateVersion = "23.11"; # Did you read the comment?
