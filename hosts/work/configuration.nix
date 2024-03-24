@@ -136,6 +136,7 @@
       telegram-desktop
       fish
       git
+      dig
       bat
       duf
       htop
