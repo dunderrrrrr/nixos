@@ -150,6 +150,7 @@
       terminator
       tailscale
       whois
+      insomnia
     ];
   };
 
