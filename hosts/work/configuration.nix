@@ -138,6 +138,7 @@
       git
       dig
       bat
+      netcat
       duf
       htop
       comma
@@ -148,6 +149,7 @@
       libreoffice
       terminator
       tailscale
+      whois
     ];
   };
 

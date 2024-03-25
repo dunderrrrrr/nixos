@@ -16,7 +16,7 @@
       ax = "aws-vault exec pk --";
       cat = "bat";
       nr = "sudo nixos-rebuild switch --flake .#";
-      nc = "sudo nix-collect-garbage --delete-older-than 15d";
+      cg = "sudo nix-collect-garbage --delete-older-than 15d";
       ns = "nix-shell --command fish";
     };
   };
