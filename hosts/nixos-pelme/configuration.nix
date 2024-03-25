@@ -27,6 +27,8 @@
       prefixLength = 24;
     }
   ];
+  networking.firewall.interfaces."ens18".allowedTCPPorts = [8000];
+
   networking.defaultGateway = "10.3.3.1";
   networking.nameservers = ["1.1.1.1"];
 
