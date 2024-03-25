@@ -13,6 +13,9 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.trusted-users = ["root" "emil" "andreas"];
+
   services.openssh.enable = true;
   services.tailscale.enable = true;
 
