@@ -44,6 +44,17 @@
           }
         '';
       };
+      ##############
+      ## PKLAN.SE ##
+      ##############
+      "pklan.se" = {
+        serverAliases = ["www.pklan.se"];
+        extraConfig = ''
+          root * /home/public/pklan/public
+          file_server
+          encode gzip
+        '';
+      };
     };
   };
 }
