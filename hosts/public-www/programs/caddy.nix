@@ -39,7 +39,7 @@
           file_server
 
           handle /static/* {
-              root * /home/forsenad/forsenad/data
+              root * /home/public/forsenad/data
               file_server
           }
         '';
