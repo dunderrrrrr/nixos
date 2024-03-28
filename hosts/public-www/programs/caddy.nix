@@ -24,7 +24,7 @@
           file_server
 
           handle /static/* {
-              root * /home/public/hotels.dunderrrrrr.se/data
+              root * /var/www/html/hotels.dunderrrrrr.se/data
               file_server
           }
         '';
@@ -39,7 +39,7 @@
           file_server
 
           handle /static/* {
-              root * /home/public/forsenad/data
+              root * /var/www/html/forsenad/data
               file_server
           }
         '';
@@ -50,7 +50,7 @@
       "pklan.se" = {
         serverAliases = ["www.pklan.se"];
         extraConfig = ''
-          root * /home/public/pklan/public
+          root * /var/www/html/pklan/public
           file_server
           encode gzip
         '';
