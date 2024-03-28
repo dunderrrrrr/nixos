@@ -3,6 +3,15 @@
     enable = true;
 
     virtualHosts = {
+      ###################
+      ## DUNDERRRRRR.SE #
+      ###################
+      "dunderrrrrr.se" = {
+        serverAliases = ["www.dunderrrrrr.se"];
+        extraConfig = ''
+          redir https://github.com/dunderrrrrr
+        '';
+      };
       "mat.dunderrrrrr.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:3500
