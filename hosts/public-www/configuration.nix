@@ -12,10 +12,8 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = true;
-  };
+  services.openssh.enable = true;
+
   networking.interfaces.ens18.ipv4.addresses = [
     {
       address = "10.10.10.11";
