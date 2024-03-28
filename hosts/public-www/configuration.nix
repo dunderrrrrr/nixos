@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./programs/caddy.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -71,6 +72,7 @@
     tailscale
     direnv
     bat
+    caddy
   ];
   system.stateVersion = "23.11"; # Did you read the comment?
 }
