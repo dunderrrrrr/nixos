@@ -55,6 +55,15 @@
           encode gzip
         '';
       };
+      ####################
+      ## TILDE.PELME.SE ##
+      ####################
+      "tilde.pelme.se" = {
+        extraConfig = ''
+          reverse_proxy 10.3.3.10:8000
+          file_server
+        '';
+      };
     };
   };
 }
