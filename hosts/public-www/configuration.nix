@@ -64,7 +64,11 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    wget
+    git
+    htop
+    tailscale
+    direnv
+    bat
   ];
   system.stateVersion = "23.11"; # Did you read the comment?
 }
