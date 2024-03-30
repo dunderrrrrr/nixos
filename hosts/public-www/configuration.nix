@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./programs/caddy.nix
+    ./programs/github-runners.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -78,6 +79,7 @@
     caddy
     docker-compose
     just
+    github-runner
   ];
   system.stateVersion = "23.11"; # Did you read the comment?
 }
