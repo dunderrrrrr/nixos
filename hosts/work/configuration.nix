@@ -151,6 +151,7 @@
       tailscale
       whois
       insomnia
+      openssl
     ];
   };
 
