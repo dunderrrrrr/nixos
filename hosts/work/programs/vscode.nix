@@ -14,6 +14,7 @@
 
       "terminal.integrated.tabs.enabled" = false;
       "terminal.integrated.altClickMovesCursor" = false;
+      "terminal.integrated.scrollback" = 9999999999;
 
       "window.titleBarStyle" = "custom";
       "window.customMenuBarAltFocus" = false;
