@@ -5,7 +5,10 @@
 }: {
   programs.fish = {
     enable = true;
-    interactiveShellInit = "direnv hook fish | source";
+    interactiveShellInit = ''
+      set fish_greeting
+      direnv hook fish | source
+    '';
     shellAbbrs = {
       gpf = "git push --force-with-lease";
       gca = "git commit --amend --no-edit";
