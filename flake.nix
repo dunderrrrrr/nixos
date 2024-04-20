@@ -26,7 +26,7 @@
         {nixpkgs.overlays = [nur.overlay];}
 
         ./hosts/work/configuration.nix
-        ./shared_configs/fish.nix
+        ./shared_config/config.nix
 
         home-manager.nixosModules.home-manager
         {
@@ -40,7 +40,7 @@
       system = "x86_64-linux";
       modules = [
         ./hosts/public-www/configuration.nix
-        ./shared_configs/fish.nix
+        ./shared_config/config.nix
 
         home-manager.nixosModules.home-manager
         {
@@ -54,7 +54,7 @@
       system = "x86_64-linux";
       modules = [
         ./hosts/nixos-pelme/configuration.nix
-        ./shared_configs/fish.nix
+        ./shared_config/config.nix
 
         home-manager.nixosModules.home-manager
         {

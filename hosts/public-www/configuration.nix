@@ -71,11 +71,8 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    git
-    htop
     tailscale
     direnv
-    bat
     caddy
     docker-compose
     just

@@ -82,22 +82,16 @@
       firefox
       thunderbird
       telegram-desktop
-      fish
-      git
       dig
-      bat
       netcat
       duf
-      htop
       comma
       delta
       qflipper
       direnv
-      wget
       libreoffice
       terminator
       tailscale
-      whois
       insomnia
       openssl
       spotify
