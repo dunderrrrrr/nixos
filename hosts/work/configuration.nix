@@ -125,8 +125,8 @@
               {
                 name = "mypy-type-checker";
                 publisher = "ms-python";
-                version = "2023.6.0";
-                sha256 = "uL/iHtBX5sSnkM5fVlMRWEtspNcirirjp9O5ScW039c=";
+                version = "2023.9.11361013";
+                sha256 = "sha256-QidJ1R67J5ByQ2r2FnyHoW9ti4HgZSjF5xKNYcUUlJM=";
               }
               {
                 name = "code-spell-checker";
