@@ -82,9 +82,6 @@
       firefox
       thunderbird
       telegram-desktop
-      dig
-      netcat
-      duf
       comma
       delta
       qflipper

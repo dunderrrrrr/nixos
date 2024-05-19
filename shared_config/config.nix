@@ -13,5 +13,8 @@
     htop
     wget
     whois
+    dig
+    netcat
+    duf
   ];
 }
