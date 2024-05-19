@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    ./fish.nix
+    ./programs/fish.nix
+    ./programs/nano.nix
   ];
   environment.systemPackages = with pkgs; [
     fish
@@ -16,5 +17,6 @@
     dig
     netcat
     duf
+    nanorc
   ];
 }
