@@ -88,7 +88,7 @@
       direnv
       libreoffice
       terminator
-      dbeaver
+      dbeaver-bin
       tailscale
       insomnia
       openssl
