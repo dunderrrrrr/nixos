@@ -88,6 +88,7 @@
       direnv
       libreoffice
       terminator
+      dbeaver
       tailscale
       insomnia
       openssl
