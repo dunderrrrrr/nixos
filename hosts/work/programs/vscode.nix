@@ -28,5 +28,40 @@
         command = "workbench.action.focusActiveEditorGroup";
       }
     ];
+    globalSnippets = {
+      pin = {
+        prefix = ["pin"];
+        description = "Inserts full pin word";
+        body = ["personal_identification_number"];
+      };
+      type_checking = {
+        prefix = ["type_checking"];
+        description = "Inserts TYPE_CHECKING block";
+        body = [
+          "from __future__ import annotations"
+          "from typing import TYPE_CHECKING"
+          ""
+          "if TYPE_CHECKING:"
+          "    "
+        ];
+      };
+      template_script = {
+        prefix = ["template_script"];
+        description = "Inserts a simple PK script starter template";
+        body = [
+          "import click"
+          ""
+          "from pk.utils.cli import command"
+          ""
+          "@command()"
+          "@click.option(\"--commit\", is_flag=True, default=False)"
+          "def main(commit):"
+          ""
+          "    assert commit"
+          "if __name__ == \"__main__\":"
+          "    main()"
+        ];
+      };
+    };
   };
 }
