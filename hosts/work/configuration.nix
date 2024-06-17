@@ -93,6 +93,7 @@
       insomnia
       openssl
       spotify
+      nodejs
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
