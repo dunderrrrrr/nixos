@@ -40,6 +40,8 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  virtualisation.docker.enable = true;
+
   services.xserver = {
     xkb.layout = "se";
     xkb.variant = "";
@@ -75,7 +77,7 @@
   users.users.emil = {
     isNormalUser = true;
     description = "emil";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     shell = pkgs.fish;
     packages = with pkgs; [
       slack
@@ -84,7 +86,6 @@
       telegram-desktop
       comma
       delta
-      qflipper
       direnv
       libreoffice
       terminator
@@ -94,6 +95,7 @@
       openssl
       spotify
       nodejs
+      docker
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
