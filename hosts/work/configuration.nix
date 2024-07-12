@@ -96,6 +96,7 @@
       spotify
       nodejs
       docker
+      poetry
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
