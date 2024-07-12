@@ -29,6 +29,16 @@
           }
         '';
       };
+      ###############
+      ## TELSÖK.SE ##
+      ###############
+      "xn--telsk-mua.se" = {
+        serverAliases = ["www.xn--telsk-mua.se"];
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:9191
+          file_server
+        '';
+      };
       #################
       ## FÖRSENAD.SE ##
       #################
