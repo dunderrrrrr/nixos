@@ -64,5 +64,17 @@
         }
       ];
     };
+
+    devShell.x86_64-linux = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in
+      pkgs.mkShell {
+        packages = [
+          pkgs.pre-commit
+        ];
+        shellHook = ''
+          pre-commit install --overwrite
+        '';
+      };
   };
 }
