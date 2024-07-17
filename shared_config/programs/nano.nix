@@ -7,7 +7,6 @@
     set tabsize 4
     set linenumbers
     set autoindent
-    set mouse
     set trimblanks
 
     ## Python syntax highlighting rules for Nano
