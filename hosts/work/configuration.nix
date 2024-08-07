@@ -167,6 +167,7 @@
     pre-commit
   ];
 
+  # pro tip: use "dconf watch /" to figure out the paths
   programs.dconf = {
     enable = true;
     profiles.user.databases = [
@@ -208,6 +209,9 @@
           "org/gnome/desktop/interface".clock-show-seconds = true;
           "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
           "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
+          "org/gnome/desktop/interface".font-name = "Monospace";
+          "org/gnome/desktop/interface".document-font-name = "Monospace";
+          "org/gnome/desktop/interface".monospace-font-name = "Monospace";
 
           # keybindings
           "org/gnome/settings-daemon/plugins/media-keys" = {
