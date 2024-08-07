@@ -160,6 +160,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gnome-tweaks
     gnomeExtensions.dash-to-dock
     gnomeExtensions.vitals
     alejandra
