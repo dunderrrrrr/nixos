@@ -87,8 +87,8 @@
       delta
       direnv
       libreoffice
-      terminator
       dbeaver-bin
+      kitty
       tailscale
       insomnia
       openssl
@@ -160,7 +160,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    gnome-tweaks
     gnomeExtensions.dash-to-dock
     gnomeExtensions.vitals
     alejandra
@@ -209,9 +208,6 @@
           "org/gnome/desktop/interface".clock-show-seconds = true;
           "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
           "org/gnome/desktop/peripherals/touchpad".tap-to-click = true;
-          "org/gnome/desktop/interface".font-name = "Monospace";
-          "org/gnome/desktop/interface".document-font-name = "Monospace";
-          "org/gnome/desktop/interface".monospace-font-name = "Monospace";
 
           # keybindings
           "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -221,7 +217,7 @@
           };
           "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
             name = "terminal";
-            command = "terminator";
+            command = "kitty";
             binding = "<Ctrl><Alt>t";
           };
         };

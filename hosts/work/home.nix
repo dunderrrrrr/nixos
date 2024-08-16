@@ -3,7 +3,7 @@
     ./programs/vscode.nix
     ./programs/git.nix
     ./programs/firefox.nix
-    ./programs/terminator.nix
+    ./programs/kitty.nix
   ];
 
   home.stateVersion = "23.11";
