@@ -64,7 +64,22 @@
         }
       ];
     };
+    nixosConfigurations.tor = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        {nixpkgs.overlays = [nur.overlay];}
 
+        ./hosts/tor/configuration.nix
+        ./hosts/_shared_configs/config.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.emil = import ./hosts/tor/home.nix;
+        }
+      ];
+    };
     devShell.x86_64-linux = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
