@@ -62,6 +62,13 @@
           "    main()"
         ];
       };
+      breakpoint = {
+        prefix = ["bkp"];
+        description = "Inserts breakpoint()";
+        body = [
+          "breakpoint()"
+        ];
+      };
     };
   };
 }
