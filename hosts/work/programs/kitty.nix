@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
 
-    theme = "Chalk";
+    themeFile = "Chalk";
     settings = {
       enabled_layouts = "splits";
       scrollback_lines = "4000";
