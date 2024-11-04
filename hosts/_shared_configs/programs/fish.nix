@@ -21,7 +21,7 @@
       nr = "sudo nixos-rebuild switch --flake .#";
       cg = "sudo nix-collect-garbage --delete-older-than 15d";
       ns = "nix-shell --command fish";
-      gg = "git push gerrit HEAD:refs/for/main";
+      gg = "git push gerrit HEAD:refs/for/main -o t=(git branch --show-current)";
 
       # https://github.com/alacritty/alacritty/issues/1208
       # https://www.reddit.com/r/KittyTerminal/comments/13ephdh/xtermkitty_ssh_woes_i_know_about_the_kitten_but/
