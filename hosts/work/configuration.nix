@@ -101,6 +101,7 @@
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
             [
+              ms-python.python
               ms-python.vscode-pylance
               ms-python.black-formatter
               vscode-icons-team.vscode-icons
@@ -115,15 +116,6 @@
               editorconfig.editorconfig
             ]
             ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-              # version 2024.5 not avainable in nixpkgs yet
-              # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/applications/editors/vscode/extensions/ms-python.python/default.nix
-              # https://search.nixos.org/packages?channel=23.11&show=vscode-extensions.ms-python.python&from=0&size=50&sort=relevance&type=packages&query=ms-python
-              {
-                name = "python";
-                publisher = "ms-python";
-                version = "2024.5.11011009";
-                sha256 = "sha256-dJb+oOi9ApZXhsQaCiFns7QUzmIU7FcbWOwl4WIkxLI=";
-              }
               {
                 name = "mypy-type-checker";
                 publisher = "ms-python";
