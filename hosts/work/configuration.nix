@@ -126,8 +126,8 @@
               {
                 name = "code-spell-checker";
                 publisher = "streetsidesoftware";
-                version = "3.0.1";
-                sha256 = "KeYE6/yO2n3RHPjnJOnOyHsz4XW81y9AbkSC/I975kQ=";
+                version = "4.0.15";
+                sha256 = "sha256-Zow0laXwORa3V5Hy40pWDa/+Xq7kQbgn/Ia6PrJxI6E=";
               }
               {
                 name = "toml";
