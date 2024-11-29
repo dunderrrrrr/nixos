@@ -54,17 +54,6 @@
           }
         '';
       };
-      ##############
-      ## PKLAN.SE ##
-      ##############
-      "pklan.se" = {
-        serverAliases = ["www.pklan.se"];
-        extraConfig = ''
-          root * /var/www/html/pklan/public
-          file_server
-          encode gzip
-        '';
-      };
       ####################
       ## TILDE.PELME.SE ##
       ####################
