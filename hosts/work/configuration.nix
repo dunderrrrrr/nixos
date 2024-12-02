@@ -97,6 +97,7 @@
       docker
       poetry
       ngrok
+      yubikey-manager
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
