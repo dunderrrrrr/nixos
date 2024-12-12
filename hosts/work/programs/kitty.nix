@@ -19,6 +19,12 @@
 
       "ctrl+shift+e" = "launch --location=hsplit --cwd=current";
       "ctrl+shift+o" = "launch --location=vsplit --cwd=current";
+
+      "alt+left" = "resize_window narrower 2";
+      "alt+right" = "resize_window wider 2";
+      "alt+up" = "resize_window taller 2";
+      "alt+down" = "resize_window shorter 2";
+      "alt+home" = "resize_window reset";
     };
   };
 }
