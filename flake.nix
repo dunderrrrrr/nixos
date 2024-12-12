@@ -23,7 +23,7 @@
     nixosConfigurations.work = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        {nixpkgs.overlays = [nur.overlay];}
+        {nixpkgs.overlays = [nur.overlays.default];}
 
         ./hosts/work/configuration.nix
         ./hosts/_shared_configs/config.nix
@@ -67,7 +67,7 @@
     nixosConfigurations.tor = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        {nixpkgs.overlays = [nur.overlay];}
+        {nixpkgs.overlays = [nur.overlays.default];}
 
         ./hosts/tor/configuration.nix
         ./hosts/_shared_configs/config.nix
