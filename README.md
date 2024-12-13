@@ -6,7 +6,7 @@ This is my personal `NixOS` configuration.
 
 ```
 $ git clone git@github.com:dunderrrrrr/nixos.git
-$ cd nixos && sudo nixos-rebuild switch --flake .#default
+$ cd nixos && sudo nixos-rebuild switch --flake .#[host]
 ```
 
 ```
