@@ -48,5 +48,20 @@
     git
   ];
 
+  systemd.services.mat-dunderrrrrr-se = {
+    enable = true;
+    description = "Gunicorn instance to serve mat.dunderrrrrr.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = "/home/emil/projects/mat.dunderrrrrr.se";
+      ExecStart = "/home/emil/projects/mat.dunderrrrrr.se/.venv/bin/gunicorn -w 4 dash:app";
+    };
+    environment = {
+      PATH = lib.mkForce "/home/emil/projects/mat.dunderrrrrr.se/.venv/bin";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
   system.stateVersion = "24.11";
 }
