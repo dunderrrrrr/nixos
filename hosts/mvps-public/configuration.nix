@@ -23,7 +23,7 @@
   networking.nameservers = ["1.1.1.1"];
   networking.hostName = "mvps-public";
 
-  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedTCPPorts = [22 80 443];
 
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
@@ -46,6 +46,7 @@
 
   environment.systemPackages = with pkgs; [
     git
+    caddy
   ];
 
   systemd.services.mat-dunderrrrrr-se = {
@@ -61,6 +62,19 @@
       PATH = lib.mkForce "/home/emil/projects/mat.dunderrrrrr.se/.venv/bin";
     };
     wantedBy = ["multi-user.target"];
+  };
+
+  services.caddy = {
+    enable = true;
+
+    virtualHosts = {
+      "mat.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8000
+          file_server
+        '';
+      };
+    };
   };
 
   system.stateVersion = "24.11";
