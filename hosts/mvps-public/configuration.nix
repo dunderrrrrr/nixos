@@ -23,9 +23,10 @@
   networking.nameservers = ["1.1.1.1"];
   networking.hostName = "mvps-public";
 
-  services.openssh.enable = true;
-  services.openssh.settings.PermitRootLogin = "yes";
   networking.firewall.allowedTCPPorts = [22];
+
+  services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = false;
 
   time.timeZone = "Europe/Stockholm";
 
