@@ -47,6 +47,7 @@
   environment.systemPackages = with pkgs; [
     git
     caddy
+    devenv
   ];
 
   systemd.services.mat-dunderrrrrr-se = {
