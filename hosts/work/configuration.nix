@@ -17,6 +17,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["root" "emil"];
 
+  virtualisation.virtualbox.host.enable = true;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Stockholm";
@@ -73,10 +74,11 @@
         inherit pkgs;
       };
   };
+  users.extraGroups.vboxusers.members = ["emil"];
   users.users.emil = {
     isNormalUser = true;
     description = "emil";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel" "docker" "vboxusers"];
     shell = pkgs.fish;
     packages = with pkgs; [
       slack
@@ -156,6 +158,7 @@
     gnomeExtensions.vitals
     alejandra
     pre-commit
+    # virtualbox
   ];
 
   # pro tip: use "dconf watch /" to figure out the paths
