@@ -49,10 +49,10 @@
     serviceConfig = {
       User = "emil";
       WorkingDirectory = "/home/emil/projects/mat.dunderrrrrr.se";
-      ExecStart = "/home/emil/projects/mat.dunderrrrrr.se/.venv/bin/gunicorn -w 4 dash:app";
+      ExecStart = "/home/emil/projects/mat.dunderrrrrr.se/.devenv/state/venv/bin/gunicorn -w 4 dash:app";
     };
     environment = {
-      PATH = lib.mkForce "/home/emil/projects/mat.dunderrrrrr.se/.venv/bin";
+      PATH = lib.mkForce "/home/emil/projects/mat.dunderrrrrr.se/.devenv/state/venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
