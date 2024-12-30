@@ -13,15 +13,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
 
-  networking.interfaces.ens18.ipv4.addresses = [
-    {
-      address = "185.96.163.178";
-      prefixLength = 24;
-    }
-  ];
-  networking.defaultGateway = "185.96.163.1";
-  networking.nameservers = ["1.1.1.1"];
-  networking.hostName = "mvps-public";
+  networking.hostName = "nixos-public";
 
   networking.firewall.allowedTCPPorts = [22 80 443];
 
@@ -78,5 +70,5 @@
     };
   };
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "24.05";
 }

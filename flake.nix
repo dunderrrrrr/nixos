@@ -80,17 +80,17 @@
         }
       ];
     };
-    nixosConfigurations.mvps-public = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hosts/mvps-public/configuration.nix
+        ./hosts/nixos-public/configuration.nix
         ./hosts/_shared_configs/config.nix
 
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.emil = import ./hosts/mvps-public/home.nix;
+          home-manager.users.emil = import ./hosts/nixos-public/home.nix;
         }
       ];
     };
