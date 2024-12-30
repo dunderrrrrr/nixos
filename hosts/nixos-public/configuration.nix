@@ -3,7 +3,10 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  hotelsProjectRoot = "/home/emil/projects/hotels.dunderrrrrr.se/";
+  matProjectRoot = "/home/emil/projects/mat.dunderrrrrr.se";
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -48,16 +51,34 @@
     after = ["network.target"];
     serviceConfig = {
       User = "emil";
-      WorkingDirectory = "/home/emil/projects/mat.dunderrrrrr.se";
-      ExecStart = "/home/emil/projects/mat.dunderrrrrr.se/.devenv/state/venv/bin/gunicorn -w 4 dash:app";
+      WorkingDirectory = matProjectRoot;
+      ExecStart = "${matProjectRoot}/.devenv/state/venv/bin/gunicorn -w 4 dash:app";
     };
     environment = {
-      PATH = lib.mkForce "/home/emil/projects/mat.dunderrrrrr.se/.devenv/state/venv/bin/";
+      PATH = lib.mkForce "${matProjectRoot}/.devenv/state/venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
+  systemd.services.hotels-dunderrrrrr-se = {
+    enable = true;
+    description = "Gunicorn instance to serve hotels.dunderrrrrr.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = hotelsProjectRoot;
+      EnvironmentFile = "${hotelsProjectRoot}/.env";
+      ExecStartPre = "${hotelsProjectRoot}/.devenv/state/venv/bin/python manage.py collectstatic --noinput";
+      ExecStart = "${hotelsProjectRoot}/.devenv/state/venv/bin/gunicorn -w 4 --bind 127.0.0.1:8001 hotels.wsgi";
+    };
+    environment = {
+      PATH = lib.mkForce "${hotelsProjectRoot}/.devenv/state/venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
 
   services.caddy = {
+    group = "users";
     enable = true;
 
     virtualHosts = {
@@ -66,6 +87,16 @@
           reverse_proxy 127.0.0.1:8000
           file_server
         '';
+      };
+
+      "hotels.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8001
+
+          handle_path /static/* {
+            root * /srv/hotels.dunderrrrrr.se/data
+            file_server
+          }'';
       };
     };
   };
