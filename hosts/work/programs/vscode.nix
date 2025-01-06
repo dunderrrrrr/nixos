@@ -4,6 +4,8 @@
     userSettings = {
       "workbench.colorTheme" = "Monokai";
       "workbench.iconTheme" = "vscode-icons";
+      "workbench.list.smoothScrolling" = true;
+
       "vsicons.presets.foldersAllDefaultIcons" = true;
       "explorer.confirmDragAndDrop" = false;
 
@@ -12,9 +14,15 @@
       "editor.minimap.showSlider" = true;
       "editor.multiCursorLimit" = 99999999;
 
+      "editor.smoothScrolling" = true;
+      "editor.cursorBlinking" = "smooth";
+      "editor.cursorSmoothCaretAnimation" = "on";
+
       "terminal.integrated.tabs.enabled" = false;
       "terminal.integrated.altClickMovesCursor" = false;
       "terminal.integrated.scrollback" = 9999999999;
+      "terminal.integrated.smoothScrolling" = true;
+      "terminal.integrated.cursorBlinking" = true;
 
       "window.titleBarStyle" = "custom";
       "window.customMenuBarAltFocus" = false;
