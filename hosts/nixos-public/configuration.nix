@@ -6,6 +6,7 @@
 }: let
   hotelsProjectRoot = "/home/emil/projects/hotels.dunderrrrrr.se/";
   matProjectRoot = "/home/emil/projects/mat.dunderrrrrr.se";
+  swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -77,6 +78,21 @@ in {
     wantedBy = ["multi-user.target"];
   };
 
+  systemd.services.swarje-dunderrrrrr-se = {
+    enable = true;
+    description = "Gunicorn instance to serve swarje.dunderrrrrr.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = swarjeProjectRoot;
+      ExecStart = "${swarjeProjectRoot}/.devenv/state/venv/bin/gunicorn -w 8 --bind 127.0.0.1:8002 run:app";
+    };
+    environment = {
+      PATH = lib.mkForce "${swarjeProjectRoot}/.devenv/state/venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
   services.caddy = {
     group = "users";
     enable = true;
@@ -97,6 +113,13 @@ in {
             root * /srv/hotels.dunderrrrrr.se/data
             file_server
           }'';
+      };
+
+      "swarje.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8002
+          file_server
+        '';
       };
 
       "dunderrrrrr.se" = {
