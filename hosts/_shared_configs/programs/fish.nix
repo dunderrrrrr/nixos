@@ -21,7 +21,7 @@
       nr = "sudo nixos-rebuild switch --flake .#";
       cg = "sudo nix-collect-garbage --delete-older-than 15d";
       ns = "nix-shell --command fish";
-      gg = "git push gerrit HEAD:refs/for/main -o t=(git branch --show-current)";
+      gg = "git push origin HEAD:refs/for/main -o t=(git branch --show-current)";
       pb = "pkbuild";
 
       # https://github.com/alacritty/alacritty/issues/1208
