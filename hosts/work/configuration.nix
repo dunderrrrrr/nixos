@@ -119,8 +119,7 @@
               dbaeumer.vscode-eslint
               editorconfig.editorconfig
               charliermarsh.ruff
-              github.copilot
-              github.copilot-chat
+              supermaven.supermaven
             ]
             ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
               {
