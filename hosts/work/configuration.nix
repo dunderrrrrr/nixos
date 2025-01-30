@@ -101,6 +101,7 @@
       ngrok
       yubikey-manager
       devenv
+      jujutsu
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
