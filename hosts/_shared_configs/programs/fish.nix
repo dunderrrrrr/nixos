@@ -26,6 +26,7 @@
       jja = "jj abandon ";
       jjw = "watch -n1 --color jj --ignore-working-copy log --color=always";
       jjr = "git fetch && jj rebase -b 'all:mutable() & mine()' -d main@origin --skip-emptied";
+      jjn = "jj new main@origin";
 
       # https://github.com/alacritty/alacritty/issues/1208
       # https://www.reddit.com/r/KittyTerminal/comments/13ephdh/xtermkitty_ssh_woes_i_know_about_the_kitten_but/
