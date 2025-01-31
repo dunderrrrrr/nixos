@@ -115,6 +115,13 @@ in {
           }'';
       };
 
+      "hus.dunderrrrrr.se" = {
+        extraConfig = ''
+          root * /srv/hus.dunderrrrrr.se/public
+          file_server
+        '';
+      };
+
       "swarje.dunderrrrrr.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8002
