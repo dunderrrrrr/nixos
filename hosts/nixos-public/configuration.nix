@@ -7,6 +7,7 @@
   hotelsProjectRoot = "/home/emil/projects/hotels.dunderrrrrr.se/";
   matProjectRoot = "/home/emil/projects/mat.dunderrrrrr.se";
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
+  badaProjectRoot = "/home/emil/projects/bada.dunderrrrrr.se";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -89,6 +90,21 @@ in {
     };
     environment = {
       PATH = lib.mkForce "${swarjeProjectRoot}/.devenv/state/venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
+  systemd.services.bada-dunderrrrrr-se = {
+    enable = true;
+    description = "Gunicorn instance to serve bada.dunderrrrrr.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = badaProjectRoot;
+      ExecStart = "${badaProjectRoot}/.devenv/state/venv/bin/gunicorn -w 4 --bind 127.0.0.1:8003 bada:app";
+    };
+    environment = {
+      PATH = lib.mkForce "${badaProjectRoot}/.devenv/state/venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
