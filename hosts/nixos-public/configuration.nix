@@ -145,6 +145,13 @@ in {
         '';
       };
 
+      "bada.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8003
+          file_server
+        '';
+      };
+
       "dunderrrrrr.se" = {
         serverAliases = ["www.dunderrrrrr.se"];
         extraConfig = ''
