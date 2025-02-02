@@ -151,13 +151,6 @@ in {
           file_server
         '';
       };
-
-      "dunderrrrrr.se" = {
-        serverAliases = ["www.dunderrrrrr.se"];
-        extraConfig = ''
-          redir https://github.com/dunderrrrrr
-        '';
-      };
     };
   };
 
