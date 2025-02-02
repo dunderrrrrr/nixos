@@ -101,7 +101,7 @@ in {
     serviceConfig = {
       User = "emil";
       WorkingDirectory = badaProjectRoot;
-      ExecStart = "${badaProjectRoot}/.devenv/state/venv/bin/gunicorn -w 4 --bind 127.0.0.1:8003 bada:app";
+      ExecStart = "${badaProjectRoot}/.devenv/state/venv/bin/gunicorn -w 8 --bind 127.0.0.1:8003 bada:app";
     };
     environment = {
       PATH = lib.mkForce "${badaProjectRoot}/.devenv/state/venv/bin/";
