@@ -45,6 +45,7 @@ in {
     git
     caddy
     devenv
+    screen
   ];
 
   systemd.services.mat-dunderrrrrr-se = {
