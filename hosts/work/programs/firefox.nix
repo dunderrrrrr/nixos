@@ -10,6 +10,7 @@
         onepassword-password-manager
         ublock-origin
         bitwarden
+        vimium
       ];
     };
   };
