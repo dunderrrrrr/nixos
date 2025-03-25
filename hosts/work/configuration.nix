@@ -84,7 +84,7 @@
       slack
       firefox
       thunderbird
-      telegram-desktop
+      deltachat-desktop
       comma
       delta
       direnv
