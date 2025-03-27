@@ -121,14 +121,9 @@
               editorconfig.editorconfig
               charliermarsh.ruff
               supermaven.supermaven
+              matangover.mypy
             ]
             ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-              {
-                name = "mypy-type-checker";
-                publisher = "ms-python";
-                version = "2023.9.11501016";
-                sha256 = "sha256-mHc+yT4yw+jkRd1j409C7OJzg4jg6dKMgbE8/5cBUxw=";
-              }
               {
                 name = "code-spell-checker";
                 publisher = "streetsidesoftware";
