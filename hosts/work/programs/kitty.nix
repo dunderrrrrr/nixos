@@ -2,10 +2,10 @@
   programs.kitty = {
     enable = true;
 
-    themeFile = "Chalk";
+    themeFile = "Batman";
     settings = {
       enabled_layouts = "splits";
-      scrollback_lines = "4000";
+      scrollback_lines = "8000";
     };
 
     keybindings = {
