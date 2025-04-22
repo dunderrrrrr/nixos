@@ -13,6 +13,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "emil-hp";
+  networking.extraHosts = ''
+    192.168.50.11 esp.ha.home
+  '';
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["root" "emil"];
