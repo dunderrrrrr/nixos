@@ -36,50 +36,6 @@
         }
       ];
     };
-    nixosConfigurations.public-www = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/public-www/configuration.nix
-        ./hosts/_shared_configs/config.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.emil = import ./hosts/public-www/home.nix;
-        }
-      ];
-    };
-    nixosConfigurations.nixos-pelme = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./hosts/nixos-pelme/configuration.nix
-        ./hosts/_shared_configs/config.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.emil = import ./hosts/nixos-pelme/home.nix;
-        }
-      ];
-    };
-    nixosConfigurations.tor = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        {nixpkgs.overlays = [nur.overlays.default];}
-
-        ./hosts/tor/configuration.nix
-        ./hosts/_shared_configs/config.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.emil = import ./hosts/tor/home.nix;
-        }
-      ];
-    };
     nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
