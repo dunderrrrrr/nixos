@@ -53,6 +53,8 @@
     nixosConfigurations.fwk = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        {nixpkgs.overlays = [nur.overlays.default];}
+
         ./hosts/fwk/configuration.nix
         ./hosts/_shared_configs/config.nix
 
