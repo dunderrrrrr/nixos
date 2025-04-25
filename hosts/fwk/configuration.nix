@@ -19,23 +19,11 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.trusted-users = ["root" "emil"];
 
-  services.openssh = {
-    enable = true;
-    ports = [22];
-    settings = {
-      PasswordAuthentication = true;
-      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
-      UseDns = true;
-      X11Forwarding = false;
-      PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
-    };
-  };
   services.tailscale.enable = true;
 
   virtualisation.docker.enable = true;
 
-  # enabling yubikey support
-  services.pcscd.enable = true;
+  services.pcscd.enable = true; # yubikey support
 
   time.timeZone = "Europe/Stockholm";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -67,6 +55,9 @@
   services.printing.enable = true;
 
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -74,6 +65,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  programs.ssh.startAgent = true;
 
   users.users.emil = {
     isNormalUser = true;

@@ -72,6 +72,7 @@
       pkgs.mkShell {
         packages = [
           pkgs.pre-commit
+          pkgs.alejandra
         ];
         shellHook = ''
           pre-commit install --overwrite
