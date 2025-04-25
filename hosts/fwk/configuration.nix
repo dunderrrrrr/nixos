@@ -71,10 +71,11 @@
   users.users.emil = {
     isNormalUser = true;
     description = "emil";
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = ["networkmanager" "wheel" "docker" "dialout"];
     shell = pkgs.fish;
     packages = with pkgs; [
       slack
+      chromium
       firefox
       thunderbird
       deltachat-desktop
