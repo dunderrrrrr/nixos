@@ -92,6 +92,7 @@
       yubikey-manager
       devenv
       jujutsu
+      gnome-disk-utility
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
