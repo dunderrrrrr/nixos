@@ -53,7 +53,7 @@
   console.keyMap = "sv-latin1";
 
   services.printing.enable = true;
-
+  services.fwupd.enable = true; # https://wiki.nixos.org/wiki/Hardware/Framework/Laptop_13
   services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
