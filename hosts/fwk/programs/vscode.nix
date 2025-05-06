@@ -6,6 +6,7 @@
         "workbench.colorTheme" = "Monokai";
         "workbench.iconTheme" = "vscode-icons";
         "workbench.list.smoothScrolling" = true;
+        "workbench.editor.wrapTabs" = true;
 
         "vsicons.presets.foldersAllDefaultIcons" = true;
         "explorer.confirmDragAndDrop" = false;
