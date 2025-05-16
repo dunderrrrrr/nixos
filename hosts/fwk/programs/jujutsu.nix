@@ -11,15 +11,16 @@
         conflict-marker-style = "git";
         pager = "delta";
         diff.format = "git";
-        default-description = ''
-          JJ: If applied, this commit will...
-
-          JJ: Explain why this change is being made
-
-          JJ: Provide links to any relevant tickets, articles or other resources
-
-        '';
       };
+      template-aliases.default_commit_description = ''
+        "JJ: If applied, this commit will...
+
+        JJ: Explain why this change is being made
+
+        JJ: Provide links to any relevant tickets, articles or other resources
+
+        "
+      '';
     };
   };
 }
