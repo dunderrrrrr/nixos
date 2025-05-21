@@ -162,6 +162,12 @@ in {
           file_server
         '';
       };
+      "money.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8005
+          file_server
+        '';
+      };
     };
   };
 
