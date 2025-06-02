@@ -93,6 +93,8 @@
       devenv
       jujutsu
       gnome-disk-utility
+      metasploit
+      nmap
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
