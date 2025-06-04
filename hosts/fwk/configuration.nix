@@ -95,6 +95,7 @@
       gnome-disk-utility
       metasploit
       nmap
+      kdePackages.kalk
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
