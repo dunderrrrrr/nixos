@@ -18,5 +18,7 @@
     netcat
     duf
     nanorc
+    fd
+    ripgrep
   ];
 }
