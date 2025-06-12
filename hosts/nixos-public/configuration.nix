@@ -8,6 +8,7 @@
   matProjectRoot = "/home/emil/projects/mat.dunderrrrrr.se";
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   badaProjectRoot = "/home/emil/projects/bada.dunderrrrrr.se";
+  goodNewsProjectRoot = "/home/emil/projects/good-news.se";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -109,6 +110,20 @@ in {
     };
     environment = {
       PATH = lib.mkForce "${badaProjectRoot}/.devenv/state/venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+  systemd.services.good-news-se = {
+    enable = true;
+    description = "Pelican server for good-news.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = goodNewsProjectRoot;
+      ExecStart = "${pkgs.bash}/bin/bash -c '${goodNewsProjectRoot}/.devenv/state/venv/bin/pelican content --listen --port 8006'";
+    };
+    environment = {
+      PATH = lib.mkForce "${goodNewsProjectRoot}/.devenv/state/venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
