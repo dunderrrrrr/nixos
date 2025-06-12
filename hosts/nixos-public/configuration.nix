@@ -168,6 +168,12 @@ in {
           file_server
         '';
       };
+      "good-news.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8006
+          file_server
+        '';
+      };
     };
   };
 
