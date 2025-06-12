@@ -9,6 +9,7 @@
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   badaProjectRoot = "/home/emil/projects/bada.dunderrrrrr.se";
   goodNewsProjectRoot = "/home/emil/projects/good-news.se";
+  deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -127,6 +128,20 @@ in {
     };
     wantedBy = ["multi-user.target"];
   };
+  systemd.services.deploy-dunderrrrrr-se = {
+    enable = true;
+    description = "Gunicorn instance to serve deploy.dunderrrrrr.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = deployProjectRoot;
+      ExecStart = "${deployProjectRoot}/.devenv/state/venv/bin/uvicorn main:app --port 8007";
+    };
+    environment = {
+      PATH = lib.mkForce "${deployProjectRoot}/.devenv/state/venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
 
   services.caddy = {
     group = "users";
@@ -186,6 +201,12 @@ in {
       "good-news.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8006
+          file_server
+        '';
+      };
+      "deploy.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8007
           file_server
         '';
       };
