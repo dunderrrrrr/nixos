@@ -20,22 +20,6 @@
     alejandra,
     ...
   } @ inputs: {
-    nixosConfigurations.work = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        {nixpkgs.overlays = [nur.overlays.default];}
-
-        ./hosts/work/configuration.nix
-        ./hosts/_shared_configs/config.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.emil = import ./hosts/work/home.nix;
-        }
-      ];
-    };
     nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
