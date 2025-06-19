@@ -9,8 +9,8 @@
       ui = {
         default-command = "log"; # Allow running `jj` to see the log without a warning
         conflict-marker-style = "git";
-        pager = "delta";
-        diff-formatter = "git";
+        merge-editor = "vscode";
+        paginate = "never";
       };
       template-aliases.default_commit_description = ''
         "JJ: If applied, this commit will...
