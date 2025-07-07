@@ -27,6 +27,13 @@ in {
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
 
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 * * * *      emil    /home/emil/projects/kaffeindex/.devenv/state/venv/bin/python /home/emil/projects/kaffeindex/manage.py runscript update_index >> /tmp/cron.log"
+    ];
+  };
+
   virtualisation.docker.enable = true;
 
   time.timeZone = "Europe/Stockholm";
