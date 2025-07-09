@@ -103,7 +103,7 @@
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
             [
-              ms-python.python
+              # ms-python.python
               ms-python.vscode-pylance
               ms-python.black-formatter
               vscode-icons-team.vscode-icons
@@ -121,6 +121,12 @@
               matangover.mypy
             ]
             ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+              {
+                name = "python";
+                publisher = "ms-python";
+                version = "2024.22.0";
+                sha256 = "sha256-CzMAiMQhclzaSRp/EkHYFCfpROADtu3miQwT+owhvq8=";
+              }
               {
                 name = "code-spell-checker";
                 publisher = "streetsidesoftware";
