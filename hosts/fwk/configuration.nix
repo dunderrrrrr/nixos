@@ -98,6 +98,7 @@
       kdePackages.kalk
       john
       hashcat
+      gemini-cli
       (
         vscode-with-extensions.override {
           vscodeExtensions = with pkgs.vscode-extensions;
