@@ -10,6 +10,11 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix4vscode = {
+      url = "github:nix-community/nix4vscode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -18,6 +23,7 @@
     home-manager,
     nur,
     alejandra,
+    nix4vscode,
     ...
   } @ inputs: {
     nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
@@ -37,7 +43,7 @@
     nixosConfigurations.fwk = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        {nixpkgs.overlays = [nur.overlays.default];}
+        {nixpkgs.overlays = [nur.overlays.default nix4vscode.overlays.default];}
 
         ./hosts/fwk/configuration.nix
         ./hosts/_shared_configs/config.nix

@@ -78,7 +78,7 @@
       chromium
       firefox
       thunderbird
-      deltachat-desktop
+      # deltachat-desktop
       delta
       direnv
       libreoffice
@@ -99,55 +99,55 @@
       john
       hashcat
       gemini-cli
-      (
-        vscode-with-extensions.override {
-          vscodeExtensions = with pkgs.vscode-extensions;
-            [
-              # ms-python.python
-              ms-python.vscode-pylance
-              ms-python.black-formatter
-              vscode-icons-team.vscode-icons
-              hashicorp.terraform
-              batisteo.vscode-django
-              eamodio.gitlens
-              skellock.just
-              bbenoist.nix
-              esbenp.prettier-vscode
-              stylelint.vscode-stylelint
-              dbaeumer.vscode-eslint
-              editorconfig.editorconfig
-              charliermarsh.ruff
-              supermaven.supermaven
-              matangover.mypy
-            ]
-            ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-              {
-                name = "python";
-                publisher = "ms-python";
-                version = "2024.22.0";
-                sha256 = "sha256-CzMAiMQhclzaSRp/EkHYFCfpROADtu3miQwT+owhvq8=";
-              }
-              {
-                name = "code-spell-checker";
-                publisher = "streetsidesoftware";
-                version = "4.0.15";
-                sha256 = "sha256-Zow0laXwORa3V5Hy40pWDa/+Xq7kQbgn/Ia6PrJxI6E=";
-              }
-              {
-                name = "toml";
-                publisher = "be5invis";
-                version = "0.6.0";
-                sha256 = "yk7buEyQIw6aiUizAm+sgalWxUibIuP9crhyBaOjC2E=";
-              }
-              {
-                name = "vscode-direnv";
-                publisher = "rubymaniac";
-                version = "0.0.2";
-                sha256 = "TVvjKdKXeExpnyUh+fDPl+eSdlQzh7lt8xSfw1YgtL4=";
-              }
-            ];
-        }
-      )
+      # (
+      #   vscode-with-extensions.override {
+      #     vscodeExtensions = with pkgs.vscode-extensions;
+      #       [
+      #         ms-python.python
+      #         ms-python.vscode-pylance
+      #         ms-python.black-formatter
+      #         vscode-icons-team.vscode-icons
+      #         hashicorp.terraform
+      #         batisteo.vscode-django
+      #         eamodio.gitlens
+      #         skellock.just
+      #         bbenoist.nix
+      #         esbenp.prettier-vscode
+      #         stylelint.vscode-stylelint
+      #         dbaeumer.vscode-eslint
+      #         editorconfig.editorconfig
+      #         charliermarsh.ruff
+      #         supermaven.supermaven
+      #         matangover.mypy
+      #       ]
+      #       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      #         #{
+      #         #  name = "python";
+      #         #  publisher = "ms-python";
+      #         #  version = "2024.22.0";
+      #         #  sha256 = "sha256-CzMAiMQhclzaSRp/EkHYFCfpROADtu3miQwT+owhvq8=";
+      #         #}
+      #         {
+      #           name = "code-spell-checker";
+      #           publisher = "streetsidesoftware";
+      #           version = "4.0.15";
+      #           sha256 = "sha256-Zow0laXwORa3V5Hy40pWDa/+Xq7kQbgn/Ia6PrJxI6E=";
+      #         }
+      #         {
+      #           name = "toml";
+      #           publisher = "be5invis";
+      #           version = "0.6.0";
+      #           sha256 = "yk7buEyQIw6aiUizAm+sgalWxUibIuP9crhyBaOjC2E=";
+      #         }
+      #         {
+      #           name = "vscode-direnv";
+      #           publisher = "rubymaniac";
+      #           version = "0.0.2";
+      #           sha256 = "TVvjKdKXeExpnyUh+fDPl+eSdlQzh7lt8xSfw1YgtL4=";
+      #         }
+      #       ];
+      #   }
+      # )
     ];
   };
 
