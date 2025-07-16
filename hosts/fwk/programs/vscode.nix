@@ -19,6 +19,7 @@
       "charliermarsh.ruff"
       "supermaven.supermaven"
       "matangover.mypy"
+      "oderwat.indent-rainbow"
     ];
 
     profiles.default = {
