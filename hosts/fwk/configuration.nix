@@ -78,7 +78,7 @@
       chromium
       firefox
       thunderbird
-      # deltachat-desktop
+      deltachat-desktop
       delta
       direnv
       libreoffice

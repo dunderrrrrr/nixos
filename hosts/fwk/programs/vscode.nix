@@ -1,28 +1,28 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    enableUpdateCheck = false; # Disable VSCode self- update and let Home Manager to manage VSCode versions instead.
-    enableExtensionUpdateCheck = false; # Disable extensions auto - update and let nix4vscode manage updates and extensions
-    extensions = pkgs.nix4vscode.forVscode [
-      "ms-python.python"
-      "ms-python.vscode-pylance"
-      "ms-python.black-formatter"
-      "vscode-icons-team.vscode-icons"
-      "hashicorp.terraform"
-      "batisteo.vscode-django"
-      "eamodio.gitlens"
-      "bbenoist.nix"
-      "esbenp.prettier-vscode"
-      "stylelint.vscode-stylelint"
-      "dbaeumer.vscode-eslint"
-      "editorconfig.editorconfig"
-      "charliermarsh.ruff"
-      "supermaven.supermaven"
-      "matangover.mypy"
-      "oderwat.indent-rainbow"
-    ];
 
     profiles.default = {
+      # enableUpdateCheck = false; # Disable VSCode self- update and let Home Manager to manage VSCode versions instead.
+      # enableExtensionUpdateCheck = false; # Disable extensions auto - update and let nix4vscode manage updates and extensions
+      # extensions = pkgs.nix4vscode.forVscode [
+      #   "ms-python.python"
+      #   "ms-python.vscode-pylance"
+      #   "ms-python.black-formatter"
+      #   "vscode-icons-team.vscode-icons"
+      #   "hashicorp.terraform"
+      #   "batisteo.vscode-django"
+      #   "eamodio.gitlens"
+      #   "bbenoist.nix"
+      #   "esbenp.prettier-vscode"
+      #   "stylelint.vscode-stylelint"
+      #   "dbaeumer.vscode-eslint"
+      #   "editorconfig.editorconfig"
+      #   "charliermarsh.ruff"
+      #   "supermaven.supermaven"
+      #   "matangover.mypy"
+      #   # "oderwat.indent-rainbow"
+      # ];
       userSettings = {
         "workbench.colorTheme" = "Monokai";
         "workbench.iconTheme" = "vscode-icons";
