@@ -8,7 +8,6 @@
   matProjectRoot = "/home/emil/projects/mat.dunderrrrrr.se";
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   badaProjectRoot = "/home/emil/projects/bada.dunderrrrrr.se";
-  goodNewsProjectRoot = "/home/emil/projects/good-news.se";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
 in {
   imports = [
@@ -121,20 +120,6 @@ in {
     };
     wantedBy = ["multi-user.target"];
   };
-  systemd.services.good-news-se = {
-    enable = true;
-    description = "Pelican server for good-news.se";
-    after = ["network.target"];
-    serviceConfig = {
-      User = "emil";
-      WorkingDirectory = goodNewsProjectRoot;
-      ExecStart = "${pkgs.bash}/bin/bash -c '${goodNewsProjectRoot}/.devenv/state/venv/bin/pelican content --listen --port 8006'";
-    };
-    environment = {
-      PATH = lib.mkForce "${goodNewsProjectRoot}/.devenv/state/venv/bin/";
-    };
-    wantedBy = ["multi-user.target"];
-  };
   systemd.services.deploy-dunderrrrrr-se = {
     enable = true;
     description = "Gunicorn instance to serve deploy.dunderrrrrr.se";
@@ -196,18 +181,6 @@ in {
       "huslogg.dunderrrrrr.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8004
-          file_server
-        '';
-      };
-      "money.dunderrrrrr.se" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8005
-          file_server
-        '';
-      };
-      "good-news.se" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8006
           file_server
         '';
       };
