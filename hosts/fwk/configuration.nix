@@ -99,6 +99,7 @@
       john
       hashcat
       gemini-cli
+      nixfmt
       # (
       #   vscode-with-extensions.override {
       #     vscodeExtensions = with pkgs.vscode-extensions;
