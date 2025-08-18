@@ -58,6 +58,16 @@
           key = "ctrl+shift+[minus]";
           command = "workbench.action.focusActiveEditorGroup";
         }
+        {
+          key = "alt+down";
+          command = "workbench.action.terminal.focusNextPane";
+          when = "terminalFocus";
+        }
+        {
+          key = "alt+up";
+          command = "workbench.action.terminal.focusPreviousPane";
+          when = "terminalFocus";
+        }
       ];
       globalSnippets = {
         pin = {
