@@ -25,7 +25,7 @@
       pb = "pkbuild";
       jja = "jj abandon ";
       jjw = "watch -n1 --color jj --ignore-working-copy log --color=always";
-      jjr = "git fetch && jj rebase -b 'all:mutable() & mine()' -d main@origin --skip-emptied";
+      jjr = "git fetch && jj rebase -b 'mutable() & mine()' -d main@origin --skip-emptied";
       jjn = "jj new main@origin";
       jjs = "jj squash";
     };
