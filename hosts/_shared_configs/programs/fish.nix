@@ -28,6 +28,7 @@
       jjr = "git fetch && jj rebase -b 'mutable() & mine()' -d main@origin --skip-emptied";
       jjn = "jj new main@origin";
       jjs = "jj squash";
+      dr = "dblab run --rm";
     };
   };
 }
