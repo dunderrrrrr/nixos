@@ -9,6 +9,7 @@
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   badaProjectRoot = "/home/emil/projects/bada.dunderrrrrr.se";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
+  blocketapiProjectRoot = "/home/emil/projects/blocket-api.se";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -150,6 +151,20 @@ in {
     };
     wantedBy = ["multi-user.target"];
   };
+  systemd.services.blocket-api-se = {
+    enable = true;
+    description = "Gunicorn instance to serve blocket-api.se api";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = blocketapiProjectRoot;
+      ExecStart = "${blocketapiProjectRoot}/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8008";
+    };
+    environment = {
+      PATH = lib.mkForce "${blocketapiProjectRoot}/.venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
 
   services.caddy = {
     group = "users";
@@ -204,6 +219,15 @@ in {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8007
           file_server
+        '';
+      };
+      "blocket-api.se" = {
+        extraConfig = ''
+          root * /srv/blocket-api/
+          file_server
+
+          @api path /v1* /swagger*
+          reverse_proxy @api http://127.0.0.1:8008
         '';
       };
     };
