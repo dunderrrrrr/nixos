@@ -71,6 +71,7 @@ in {
   environment.systemPackages = with pkgs; [
     git
     caddy
+    goaccess
     devenv
     screen
     docker-compose
