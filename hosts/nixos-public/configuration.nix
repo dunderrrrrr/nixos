@@ -69,6 +69,7 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
+    jq
     git
     caddy
     goaccess
@@ -167,6 +168,17 @@ in {
     wantedBy = ["multi-user.target"];
   };
 
+  systemd.services.blocket-api-stats = {
+    enable = true;
+    description = "Goaccess stats for blocket-api.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "caddy";
+      ExecStart = "${pkgs.goaccess}/bin/goaccess /var/log/caddy/access-blocket-api.se.log -o /srv/blocket-api-stats/report.html --log-format=CADDY --real-time-html --addr=127.0.0.1 --port=7890 --persist --restore --ws-url=wss://blocket-api.se:443/stats/ws";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
   services.caddy = {
     group = "users";
     enable = true;
@@ -226,6 +238,23 @@ in {
         extraConfig = ''
           root * /srv/blocket-api/
           file_server
+
+          handle_path /stats/ws* {
+            reverse_proxy 127.0.0.1:7890
+
+            basicauth {
+              admin $2a$14$SGxI/3VIuh3pqTEJKK6ECejw1Tf4uGl5ET6VOxWhsDv0SPCisjti6
+            }
+          }
+
+          handle_path /stats* {
+             root * /srv/blocket-api-stats
+             file_server
+
+             basicauth {
+               admin $2a$14$SGxI/3VIuh3pqTEJKK6ECejw1Tf4uGl5ET6VOxWhsDv0SPCisjti6
+             }
+          }
 
           @api path /v1* /swagger*
           reverse_proxy @api http://127.0.0.1:8008
