@@ -68,12 +68,18 @@
 
   programs.ssh.startAgent = true;
 
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
+
   users.users.emil = {
     isNormalUser = true;
     description = "emil";
     extraGroups = ["networkmanager" "wheel" "docker" "dialout"];
     shell = pkgs.fish;
     packages = with pkgs; [
+      gnupg
       slack
       chromium
       firefox

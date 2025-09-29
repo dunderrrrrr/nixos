@@ -4,6 +4,11 @@
     userName = "dunderrrrrr";
     userEmail = "emil.bjorkroth@gmail.com";
 
+    signing = {
+      key = "F8782F0E39D90508";
+      signByDefault = true;
+    };
+
     extraConfig = {
       push.default = "current";
       pull.rebase = true;
