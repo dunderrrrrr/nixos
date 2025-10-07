@@ -46,6 +46,7 @@
         "terminal.integrated.scrollback" = 9999999999;
         "terminal.integrated.smoothScrolling" = true;
         "terminal.integrated.cursorBlinking" = true;
+        "terminal.integrated.stickyScroll.enabled" = false;
 
         "window.titleBarStyle" = "custom";
         "window.customMenuBarAltFocus" = false;
