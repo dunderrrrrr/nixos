@@ -23,13 +23,20 @@ in {
   networking.hostName = "nixos-public";
 
   networking.firewall.allowedTCPPorts = [
-    22
+    22228
     80
     443
   ];
 
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh = {
+    enable = true;
+    ports = [22228];
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 
   services.cron = {
     enable = true;
