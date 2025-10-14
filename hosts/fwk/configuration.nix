@@ -16,8 +16,14 @@
   '';
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nix.settings.trusted-users = ["root" "emil"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  nix.settings.trusted-users = [
+    "root"
+    "emil"
+  ];
 
   services.tailscale.enable = true;
 
@@ -76,7 +82,12 @@
   users.users.emil = {
     isNormalUser = true;
     description = "emil";
-    extraGroups = ["networkmanager" "wheel" "docker" "dialout"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "dialout"
+    ];
     shell = pkgs.fish;
     packages = with pkgs; [
       gnupg
@@ -106,67 +117,9 @@
       hashcat
       gemini-cli
       nixfmt
-      # (
-      #   vscode-with-extensions.override {
-      #     vscodeExtensions = with pkgs.vscode-extensions;
-      #       [
-      #         ms-python.python
-      #         ms-python.vscode-pylance
-      #         ms-python.black-formatter
-      #         vscode-icons-team.vscode-icons
-      #         hashicorp.terraform
-      #         batisteo.vscode-django
-      #         eamodio.gitlens
-      #         skellock.just
-      #         bbenoist.nix
-      #         esbenp.prettier-vscode
-      #         stylelint.vscode-stylelint
-      #         dbaeumer.vscode-eslint
-      #         editorconfig.editorconfig
-      #         charliermarsh.ruff
-      #         supermaven.supermaven
-      #         matangover.mypy
-      #       ]
-      #       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      #         #{
-      #         #  name = "python";
-      #         #  publisher = "ms-python";
-      #         #  version = "2024.22.0";
-      #         #  sha256 = "sha256-CzMAiMQhclzaSRp/EkHYFCfpROADtu3miQwT+owhvq8=";
-      #         #}
-      #         {
-      #           name = "code-spell-checker";
-      #           publisher = "streetsidesoftware";
-      #           version = "4.0.15";
-      #           sha256 = "sha256-Zow0laXwORa3V5Hy40pWDa/+Xq7kQbgn/Ia6PrJxI6E=";
-      #         }
-      #         {
-      #           name = "toml";
-      #           publisher = "be5invis";
-      #           version = "0.6.0";
-      #           sha256 = "yk7buEyQIw6aiUizAm+sgalWxUibIuP9crhyBaOjC2E=";
-      #         }
-      #         {
-      #           name = "vscode-direnv";
-      #           publisher = "rubymaniac";
-      #           version = "0.0.2";
-      #           sha256 = "TVvjKdKXeExpnyUh+fDPl+eSdlQzh7lt8xSfw1YgtL4=";
-      #         }
-      #       ];
-      #   }
-      # )
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur =
-      import (builtins.fetchTarball {
-        url = "https://github.com/nix-community/NUR/archive/3a6a6f4da737da41e27922ce2cfacf68a109ebce.tar.gz";
-        sha256 = "04387gzgl8y555b3lkz9aiw9xsldfg4zmzp930m62qw8zbrvrshd";
-      }) {
-        inherit pkgs;
-      };
-  };
   system.stateVersion = "24.11";
 }
