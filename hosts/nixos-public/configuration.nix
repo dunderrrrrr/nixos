@@ -134,7 +134,7 @@ in {
     serviceConfig = {
       User = "emil";
       WorkingDirectory = blocketapiProjectRoot;
-      ExecStart = "${blocketapiProjectRoot}/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8008";
+      ExecStart = "${blocketapiProjectRoot}/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8008 --access-logfile - --error-logfile - --log-level info";
     };
     environment = {
       PATH = lib.mkForce "${blocketapiProjectRoot}/.venv/bin/";
