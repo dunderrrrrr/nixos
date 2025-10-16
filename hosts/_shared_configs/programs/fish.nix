@@ -8,6 +8,11 @@
     interactiveShellInit = ''
       set fish_greeting
       direnv hook fish | source
+
+      # fix alt+backspace and set word delimiters
+      bind alt-backspace backward-kill-word
+      set -g fish_word_delimiters " \t\n\"'()[]{}<>|;:@/"
+
     '';
     shellAbbrs = {
       gpf = "git push --force-with-lease";
