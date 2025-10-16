@@ -5,9 +5,7 @@
   ...
 }: let
   hotelsProjectRoot = "/home/emil/projects/hotels.dunderrrrrr.se/";
-  matProjectRoot = "/home/emil/projects/mat.dunderrrrrr.se";
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
-  badaProjectRoot = "/home/emil/projects/bada.dunderrrrrr.se";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   blocketapiProjectRoot = "/home/emil/projects/blocket-api.se";
 in {
@@ -85,21 +83,6 @@ in {
     docker-compose
   ];
 
-  systemd.services.mat-dunderrrrrr-se = {
-    enable = true;
-    description = "Gunicorn instance to serve mat.dunderrrrrr.se";
-    after = ["network.target"];
-    serviceConfig = {
-      User = "emil";
-      WorkingDirectory = matProjectRoot;
-      ExecStart = "${matProjectRoot}/.devenv/state/venv/bin/gunicorn -w 4 dash:app";
-    };
-    environment = {
-      PATH = lib.mkForce "${matProjectRoot}/.devenv/state/venv/bin/";
-    };
-    wantedBy = ["multi-user.target"];
-  };
-
   systemd.services.hotels-dunderrrrrr-se = {
     enable = true;
     description = "Gunicorn instance to serve hotels.dunderrrrrr.se";
@@ -116,7 +99,6 @@ in {
     };
     wantedBy = ["multi-user.target"];
   };
-
   systemd.services.swarje-dunderrrrrr-se = {
     enable = true;
     description = "Gunicorn instance to serve swarje.dunderrrrrr.se";
@@ -128,21 +110,6 @@ in {
     };
     environment = {
       PATH = lib.mkForce "${swarjeProjectRoot}/.devenv/state/venv/bin/";
-    };
-    wantedBy = ["multi-user.target"];
-  };
-
-  systemd.services.bada-dunderrrrrr-se = {
-    enable = true;
-    description = "Gunicorn instance to serve bada.dunderrrrrr.se";
-    after = ["network.target"];
-    serviceConfig = {
-      User = "emil";
-      WorkingDirectory = badaProjectRoot;
-      ExecStart = "${badaProjectRoot}/.devenv/state/venv/bin/gunicorn -w 8 --bind 127.0.0.1:8003 bada:app";
-    };
-    environment = {
-      PATH = lib.mkForce "${badaProjectRoot}/.devenv/state/venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
@@ -180,13 +147,6 @@ in {
     enable = true;
 
     virtualHosts = {
-      "mat.dunderrrrrr.se" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8000
-          file_server
-        '';
-      };
-
       "hotels.dunderrrrrr.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8001
@@ -197,23 +157,9 @@ in {
           }'';
       };
 
-      "hus.dunderrrrrr.se" = {
-        extraConfig = ''
-          root * /srv/hus.dunderrrrrr.se/public
-          file_server
-        '';
-      };
-
       "swarje.dunderrrrrr.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8002
-          file_server
-        '';
-      };
-
-      "bada.dunderrrrrr.se" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8003
           file_server
         '';
       };
