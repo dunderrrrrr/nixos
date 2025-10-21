@@ -8,6 +8,7 @@
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   blocketapiProjectRoot = "/home/emil/projects/blocket-api.se";
+  wcwpProjectRoot = "/home/emil/projects/wcwp";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -142,6 +143,21 @@ in {
     wantedBy = ["multi-user.target"];
   };
 
+  systemd.services.wcwp = {
+    enable = true;
+    description = "Gunicorn instance to serve wcwp";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = wcwpProjectRoot;
+      ExecStart = "${wcwpProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:8009 run:app";
+    };
+    environment = {
+      PATH = lib.mkForce "${wcwpProjectRoot}/.venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
   services.caddy = {
     group = "users";
     enable = true;
@@ -183,6 +199,12 @@ in {
 
           @api path /v1* /swagger*
           reverse_proxy @api http://127.0.0.1:8008
+        '';
+      };
+      "wcwp.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8009
+          file_server
         '';
       };
     };
