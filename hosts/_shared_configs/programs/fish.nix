@@ -20,7 +20,7 @@
       gr = "git rebase -i origin/main";
       gpr = "git pull --rebase origin main";
       gs = "git switch";
-      py = "django-admin shell_plus --quiet-load";
+      py = "django-admin shell --interface python";
       ax = "aws-vault exec pk --";
       cat = "bat";
       nr = "sudo nixos-rebuild switch --flake .#";
