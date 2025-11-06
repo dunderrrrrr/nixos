@@ -10,6 +10,7 @@
         default-command = "log"; # Allow running `jj` to see the log without a warning
         conflict-marker-style = "git";
         merge-editor = "vscode";
+        pager = "less -FRX";
       };
       template-aliases.default_commit_description = ''
         "JJ: If applied, this commit will...
