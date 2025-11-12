@@ -53,6 +53,12 @@
           file_server
         '';
       };
+      "seq.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:5341
+          file_server
+        '';
+      };
     };
   };
 }
