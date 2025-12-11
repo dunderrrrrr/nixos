@@ -53,6 +53,12 @@ in {
 
   console.keyMap = "sv-latin1";
 
+  services.journald.extraConfig = ''
+    SystemMaxUse=300M
+    SystemMaxFileSize=40M
+    MaxRetentionSec=4day
+  '';
+
   users.users.emil = {
     isNormalUser = true;
     shell = pkgs.fish;
