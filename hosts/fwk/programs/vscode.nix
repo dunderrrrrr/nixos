@@ -37,7 +37,13 @@
       keybindings = [
         {
           key = "ctrl+shift+[minus]";
+          command = "workbench.action.terminal.focus";
+          when = "!terminalFocus";
+        }
+        {
+          key = "ctrl+shift+[minus]";
           command = "workbench.action.focusActiveEditorGroup";
+          when = "terminalFocus";
         }
         {
           key = "alt+down";
