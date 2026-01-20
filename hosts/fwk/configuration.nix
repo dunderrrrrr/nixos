@@ -105,7 +105,6 @@
       openssl
       nodejs
       docker
-      poetry
       yubikey-manager
       devenv
       jujutsu
