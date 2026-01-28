@@ -15,6 +15,10 @@ in {
     ./hardware-configuration.nix
   ];
 
+  nix.extraOptions = ''
+    connect-timeout = 5
+  '';
+
   nixpkgs.config.allowUnfree = true;
 
   boot.loader.grub.enable = true;
