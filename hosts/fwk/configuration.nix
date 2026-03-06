@@ -119,6 +119,7 @@
       nixfmt
       realvnc-vnc-viewer
       jjui
+      zed-editor
     ];
   };
 
