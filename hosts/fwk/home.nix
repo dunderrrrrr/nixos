@@ -3,6 +3,7 @@
     ./programs/vscode.nix
     ./programs/git.nix
     ./programs/jujutsu.nix
+    ./programs/zed.nix
   ];
 
   home.stateVersion = "23.11";
