@@ -5,6 +5,11 @@
 }: {
   programs.zed-editor = {
     enable = true;
+
+    userSettings = {
+      show_signature_help_after_edits = true;
+    };
+
     mutableUserKeymaps = false;
     userKeymaps = [
       {
