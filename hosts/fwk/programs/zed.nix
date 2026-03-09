@@ -8,6 +8,11 @@
 
     userSettings = {
       show_signature_help_after_edits = true;
+      git = {
+        inline_blame = {
+          show_commit_summary = true;
+        };
+      };
     };
 
     mutableUserKeymaps = false;
