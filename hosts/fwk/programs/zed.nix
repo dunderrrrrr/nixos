@@ -7,6 +7,20 @@
     enable = true;
 
     userSettings = {
+      sticky_scroll = {enabled = true;};
+      minimap = {show = "always";}; # VSCode's showSlider equivalent
+      smooth_scrolling = true;
+      cursor_blink = true;
+      cursor_shape = "bar";
+
+      terminal = {
+        scrollback_lines = 9999999;
+      };
+
+      tab_bar = {
+        show = true;
+      };
+
       show_signature_help_after_edits = true;
       git = {
         inline_blame = {
