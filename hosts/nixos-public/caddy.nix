@@ -69,12 +69,6 @@
         extraConfig = ''
           reverse_proxy 127.0.0.1:8011
           file_server
-
-          Strict-Transport-Security max-age=31536000;
-          X-XSS-Protection "1; mode=block"
-          X-Content-Type-Options nosniff
-          Referrer-Policy strict-origin-when-cross-origin
-          Content-Security-Policy "frame-ancestors 'self' brygglogg.dunderrrrrr.se"
         '';
       };
     };
