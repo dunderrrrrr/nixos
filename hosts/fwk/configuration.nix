@@ -120,6 +120,8 @@
       realvnc-vnc-viewer
       jjui
       zed-editor
+      ghostty
+      jetbrains-mono
     ];
   };
 
