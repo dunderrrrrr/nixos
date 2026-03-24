@@ -13,6 +13,8 @@
       cursor_blink = true;
       cursor_shape = "bar";
 
+      diff_view_style = "unified";
+
       terminal = {
         scrollback_lines = 9999999;
       };
