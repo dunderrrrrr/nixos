@@ -9,6 +9,7 @@
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   blocketapiProjectRoot = "/home/emil/projects/blocket-api.se";
   wcwpProjectRoot = "/home/emil/projects/wcwp";
+  domanfluffProjectRoot = "/home/emil/projects/domanfluff";
 in {
   imports = [
     ./caddy.nix
@@ -190,6 +191,20 @@ in {
       ExecStart = "/home/emil/projects/seq/.venv/bin/python3 /home/emil/projects/seq/metrics.py";
       Restart = "always";
       RestartSec = "60s";
+    };
+  };
+
+  systemd.services.domanfluff = {
+    description = "Serve domanfluff";
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = domanfluffProjectRoot;
+      ExecStart = "${domanfluffProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:8012 run:app";
+    };
+    environment = {
+      PATH = lib.mkForce "${domanfluffProjectRoot}/.venv/bin/";
     };
   };
 

@@ -64,10 +64,15 @@
           file_server
         '';
       };
-
       "brygglogg.dunderrrrrr.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8011
+          file_server
+        '';
+      };
+      "domänfluff.dunderrrrrr.se" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8012
           file_server
         '';
       };
