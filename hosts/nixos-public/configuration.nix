@@ -102,11 +102,11 @@ in {
       User = "emil";
       WorkingDirectory = hotelsProjectRoot;
       EnvironmentFile = "${hotelsProjectRoot}/.env";
-      ExecStartPre = "${hotelsProjectRoot}/.devenv/state/venv/bin/python manage.py collectstatic --noinput";
-      ExecStart = "${hotelsProjectRoot}/.devenv/state/venv/bin/gunicorn -w 4 --bind 127.0.0.1:8001 hotels.wsgi";
+      ExecStartPre = "${hotelsProjectRoot}/.venv/bin/python manage.py collectstatic --noinput";
+      ExecStart = "${hotelsProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:8001 hotels.wsgi";
     };
     environment = {
-      PATH = lib.mkForce "${hotelsProjectRoot}/.devenv/state/venv/bin/";
+      PATH = lib.mkForce "${hotelsProjectRoot}/.venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
