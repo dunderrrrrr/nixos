@@ -13,7 +13,6 @@
   networking.hostName = "emil-fwk";
   networking.extraHosts = ''
     192.168.50.11 esp.ha.home
-    5.75.166.27 doljis
   '';
   networking.networkmanager.enable = true;
 
