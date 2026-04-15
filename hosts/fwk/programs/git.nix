@@ -1,15 +1,17 @@
 {pkgs, ...}: {
   programs.git = {
     enable = true;
-    userName = "dunderrrrrr";
-    userEmail = "emil.bjorkroth@gmail.com";
 
     signing = {
       key = "F8782F0E39D90508";
       signByDefault = true;
+      format = "openpgp";
     };
 
-    extraConfig = {
+    settings = {
+      user.name = "dunderrrrrr";
+      user.email = "emil.bjorkroth@gmail.com";
+
       push.default = "current";
       pull.rebase = true;
       commit.template = "${./templates/git_commit.txt}";
