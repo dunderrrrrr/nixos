@@ -8,6 +8,18 @@
     group = "users";
     enable = true;
 
+    extraConfig = ''
+      (secure_headers) {
+        header {
+          Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+          X-Content-Type-Options "nosniff"
+          X-Frame-Options "SAMEORIGIN"
+          Referrer-Policy "strict-origin-when-cross-origin"
+          -Server
+        }
+      }
+    '';
+
     virtualHosts = {
       "hotels.dunderrrrrr.se" = {
         extraConfig = ''
