@@ -32,6 +32,20 @@
         }
       ];
     };
+    nixosConfigurations.nixos-blocket = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/nixos-blocket/configuration.nix
+        ./hosts/_shared_configs/config.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.emil = import ./hosts/nixos-blocket/home.nix;
+        }
+      ];
+    };
     nixosConfigurations.fwk = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
