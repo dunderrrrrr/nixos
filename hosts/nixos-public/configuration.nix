@@ -7,7 +7,6 @@
   hotelsProjectRoot = "/home/emil/projects/hotels.dunderrrrrr.se/";
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
-  blocketapiProjectRoot = "/home/emil/projects/blocket-api.se";
   wcwpProjectRoot = "/home/emil/projects/wcwp";
   domanfluffProjectRoot = "/home/emil/projects/domanfluff";
 in {
@@ -141,21 +140,6 @@ in {
     wantedBy = ["multi-user.target"];
   };
 
-  systemd.services.blocket-api-se = {
-    enable = true;
-    description = "Gunicorn instance to serve blocket-api.se api";
-    after = ["network.target"];
-    serviceConfig = {
-      User = "emil";
-      WorkingDirectory = blocketapiProjectRoot;
-      ExecStart = "${blocketapiProjectRoot}/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8008 --access-logfile - --error-logfile - --log-level info";
-    };
-    environment = {
-      PATH = lib.mkForce "${blocketapiProjectRoot}/.venv/bin/";
-    };
-    wantedBy = ["multi-user.target"];
-  };
-
   systemd.services.wcwp = {
     enable = true;
     description = "Gunicorn instance to serve wcwp";
@@ -169,29 +153,6 @@ in {
       PATH = lib.mkForce "${wcwpProjectRoot}/.venv/bin/";
     };
     wantedBy = ["multi-user.target"];
-  };
-
-  systemd.services.caddy-to-seq = {
-    description = "Forward Caddy logs to Seq";
-    wantedBy = ["multi-user.target"];
-    after = ["caddy.service"];
-
-    serviceConfig = {
-      ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.coreutils}/bin/tail -F -n 0 /var/log/caddy/access-blocket-api.se.log | /home/emil/projects/seq/.venv/bin/python3 /home/emil/projects/seq/main.py'";
-      Restart = "always";
-    };
-  };
-
-  systemd.services.metrics-to-seq = {
-    description = "Send system metrics to Seq";
-    wantedBy = ["multi-user.target"];
-    after = ["network.target"];
-
-    serviceConfig = {
-      ExecStart = "/home/emil/projects/seq/.venv/bin/python3 /home/emil/projects/seq/metrics.py";
-      Restart = "always";
-      RestartSec = "60s";
-    };
   };
 
   systemd.services.domanfluff = {

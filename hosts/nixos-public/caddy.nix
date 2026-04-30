@@ -50,29 +50,9 @@
           file_server
         '';
       };
-      "blocket-api.se" = {
-        extraConfig = ''
-          root * /srv/blocket-api/
-          file_server
-
-          @api path /v1* /swagger*
-          reverse_proxy @api http://127.0.0.1:8008
-
-          handle_errors 404 {
-            rewrite * /404.html
-            file_server
-          }
-        '';
-      };
       "wcwp.dunderrrrrr.se" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8009
-          file_server
-        '';
-      };
-      "seq.dunderrrrrr.se" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:5341
           file_server
         '';
       };
