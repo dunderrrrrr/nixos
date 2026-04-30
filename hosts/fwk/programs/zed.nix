@@ -23,6 +23,13 @@
         show = true;
       };
 
+      git_panel = {
+        dock = "left";
+      };
+      project_panel = {
+        dock = "left";
+      };
+
       show_signature_help_after_edits = true;
       git = {
         inline_blame = {
