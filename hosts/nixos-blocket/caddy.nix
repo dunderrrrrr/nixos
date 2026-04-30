@@ -27,7 +27,7 @@
           file_server
 
           @api path /v1* /swagger*
-          reverse_proxy @api http://127.0.0.1:8008
+          reverse_proxy @api http://127.0.0.1:8000
 
           handle_errors 404 {
             rewrite * /404.html

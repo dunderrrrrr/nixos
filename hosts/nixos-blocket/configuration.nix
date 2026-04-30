@@ -7,7 +7,7 @@
   blocketapiProjectRoot = "/home/emil/projects/blocket-api.se";
 in {
   imports = [
-    # ./caddy.nix
+    ./caddy.nix
     ./hardware-configuration.nix
   ];
 
@@ -78,19 +78,19 @@ in {
     docker-compose
   ];
 
-  # systemd.services.blocket-api-se = {
-  #   enable = true;
-  #   description = "Gunicorn instance to serve blocket-api.se api";
-  #   after = ["network.target"];
-  #   serviceConfig = {
-  #     User = "emil";
-  #     WorkingDirectory = blocketapiProjectRoot;
-  #     ExecStart = "${blocketapiProjectRoot}/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8008 --access-logfile - --error-logfile - --log-level info";
-  #   };
-  #   environment = {
-  #     PATH = lib.mkForce "${blocketapiProjectRoot}/.venv/bin/";
-  #   };
-  #   wantedBy = ["multi-user.target"];
-  # };
+  systemd.services.api = {
+    enable = true;
+    description = "Gunicorn instance to serve the api";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "emil";
+      WorkingDirectory = blocketapiProjectRoot;
+      ExecStart = "/home/emil/projects/blocket-api.se/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8000 --access-logfile - --error-logfile - --log-level info";
+    };
+    environment = {
+      PATH = lib.mkForce "/home/emil/projects/blocket-api.se/.venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
   system.stateVersion = "24.05";
 }
