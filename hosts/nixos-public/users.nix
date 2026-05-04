@@ -3,6 +3,7 @@
     hotels = {};
     swarje = {};
     domanfluff = {};
+    wcwp = {};
   };
 
   users.users = {
@@ -24,6 +25,13 @@
       isSystemUser = true;
       group = "domanfluff";
       home = "/home/domanfluff";
+      createHome = true;
+      shell = pkgs.fish;
+    };
+    wcwp = {
+      isSystemUser = true;
+      group = "wcwp";
+      home = "/home/wcwp";
       createHome = true;
       shell = pkgs.fish;
     };

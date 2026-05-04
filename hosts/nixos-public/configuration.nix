@@ -6,7 +6,7 @@
 }: let
   hotelsProjectRoot = "/home/hotels/hotels";
   swarjeProjectRoot = "/home/swarje/swarje";
-  wcwpProjectRoot = "/home/emil/projects/wcwp";
+  wcwpProjectRoot = "/home/wcwp/wcwp";
   domanfluffProjectRoot = "/home/domanfluff/domanfluff";
 in {
   imports = [
@@ -133,7 +133,8 @@ in {
     description = "Gunicorn instance to serve wcwp";
     after = ["network.target"];
     serviceConfig = {
-      User = "emil";
+      User = "wcwp";
+      Group = "wcwp";
       WorkingDirectory = wcwpProjectRoot;
       ExecStart = "${wcwpProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:8009 run:app";
     };
