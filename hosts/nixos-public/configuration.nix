@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  hotelsProjectRoot = "/home/hotels";
+  hotelsProjectRoot = "/home/hotels/hotels";
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   wcwpProjectRoot = "/home/emil/projects/wcwp";
@@ -92,6 +92,7 @@ in {
     devenv
     screen
     docker-compose
+    direnv
   ];
 
   systemd.services.hotels-dunderrrrrr-se = {

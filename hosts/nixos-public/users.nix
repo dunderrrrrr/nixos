@@ -6,6 +6,6 @@
     group = "hotels";
     home = "/home/hotels";
     createHome = true;
-    shell = pkgs.bash;
+    shell = pkgs.fish;
   };
 }
