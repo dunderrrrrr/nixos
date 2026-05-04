@@ -1,39 +1,17 @@
-{pkgs, ...}: {
-  users.groups = {
-    hotels = {};
-    swarje = {};
-    domanfluff = {};
-    wcwp = {};
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  serviceUsers = ["hotels" "swarje" "domanfluff" "wcwp"];
+  mkServiceUser = name: {
+    isSystemUser = true;
+    group = name;
+    home = "/home/${name}";
+    createHome = true;
+    shell = pkgs.fish;
   };
-
-  users.users = {
-    hotels = {
-      isSystemUser = true;
-      group = "hotels";
-      home = "/home/hotels";
-      createHome = true;
-      shell = pkgs.fish;
-    };
-    swarje = {
-      isSystemUser = true;
-      group = "swarje";
-      home = "/home/swarje";
-      createHome = true;
-      shell = pkgs.fish;
-    };
-    domanfluff = {
-      isSystemUser = true;
-      group = "domanfluff";
-      home = "/home/domanfluff";
-      createHome = true;
-      shell = pkgs.fish;
-    };
-    wcwp = {
-      isSystemUser = true;
-      group = "wcwp";
-      home = "/home/wcwp";
-      createHome = true;
-      shell = pkgs.fish;
-    };
-  };
+in {
+  users.groups = lib.genAttrs serviceUsers (_: {});
+  users.users = lib.genAttrs serviceUsers mkServiceUser;
 }
