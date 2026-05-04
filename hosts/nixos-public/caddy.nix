@@ -23,6 +23,7 @@
     virtualHosts = {
       "hotels.dunderrrrrr.se" = {
         extraConfig = ''
+          import secure_headers
           reverse_proxy 127.0.0.1:8001
 
           handle_path /static/* {
@@ -33,6 +34,7 @@
 
       "swarje.dunderrrrrr.se" = {
         extraConfig = ''
+          import secure_headers
           reverse_proxy 127.0.0.1:8002
           file_server
         '';
@@ -40,30 +42,35 @@
 
       "huslogg.dunderrrrrr.se" = {
         extraConfig = ''
+          import secure_headers
           reverse_proxy 127.0.0.1:8004
           file_server
         '';
       };
       "deploy.dunderrrrrr.se" = {
         extraConfig = ''
+          import secure_headers
           reverse_proxy 127.0.0.1:8007
           file_server
         '';
       };
       "wcwp.dunderrrrrr.se" = {
         extraConfig = ''
+          import secure_headers
           reverse_proxy 127.0.0.1:8009
           file_server
         '';
       };
       "brygglogg.dunderrrrrr.se" = {
         extraConfig = ''
+          import secure_headers
           reverse_proxy 127.0.0.1:8011
           file_server
         '';
       };
       "domänfluff.dunderrrrrr.se" = {
         extraConfig = ''
+          import secure_headers
           reverse_proxy 127.0.0.1:8012
           file_server
         '';
