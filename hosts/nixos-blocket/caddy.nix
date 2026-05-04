@@ -23,6 +23,16 @@
     virtualHosts = {
       "blocket-api.se" = {
         extraConfig = ''
+          import secure_headers
+
+          log {
+            output file /var/log/caddy/access-blocket-api.se.log {
+              mode 0640
+            }
+            format json
+            level INFO
+          }
+
           root * /srv/blocket-api/
           file_server
 
@@ -33,6 +43,12 @@
             rewrite * /404.html
             file_server
           }
+        '';
+      };
+      "logs.blocket-api.se" = {
+        extraConfig = ''
+          import secure_headers
+          reverse_proxy http://127.0.0.1:3000
         '';
       };
     };
