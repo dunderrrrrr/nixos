@@ -2,6 +2,7 @@
   users.groups = {
     hotels = {};
     swarje = {};
+    domanfluff = {};
   };
 
   users.users = {
@@ -16,6 +17,13 @@
       isSystemUser = true;
       group = "swarje";
       home = "/home/swarje";
+      createHome = true;
+      shell = pkgs.fish;
+    };
+    domanfluff = {
+      isSystemUser = true;
+      group = "domanfluff";
+      home = "/home/domanfluff";
       createHome = true;
       shell = pkgs.fish;
     };

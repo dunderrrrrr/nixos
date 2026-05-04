@@ -8,7 +8,7 @@
   swarjeProjectRoot = "/home/swarje/swarje";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   wcwpProjectRoot = "/home/emil/projects/wcwp";
-  domanfluffProjectRoot = "/home/emil/projects/domanfluff";
+  domanfluffProjectRoot = "/home/domanfluff/domanfluff";
 in {
   imports = [
     ./caddy.nix
@@ -164,7 +164,8 @@ in {
     wantedBy = ["multi-user.target"];
     after = ["network.target"];
     serviceConfig = {
-      User = "emil";
+      User = "domanfluff";
+      Group = "domanfluff";
       WorkingDirectory = domanfluffProjectRoot;
       ExecStart = "${domanfluffProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:8012 run:app";
     };
