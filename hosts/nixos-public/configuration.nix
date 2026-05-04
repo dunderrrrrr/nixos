@@ -5,7 +5,7 @@
   ...
 }: let
   hotelsProjectRoot = "/home/hotels/hotels";
-  swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
+  swarjeProjectRoot = "/home/swarje/swarje";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   wcwpProjectRoot = "/home/emil/projects/wcwp";
   domanfluffProjectRoot = "/home/emil/projects/domanfluff";
@@ -118,7 +118,8 @@ in {
     description = "Gunicorn instance to serve swarje.dunderrrrrr.se";
     after = ["network.target"];
     serviceConfig = {
-      User = "emil";
+      User = "swarje";
+      Group = "swarje";
       WorkingDirectory = swarjeProjectRoot;
       ExecStart = "${swarjeProjectRoot}/.devenv/state/venv/bin/gunicorn -w 8 --bind 127.0.0.1:8002 run:app";
     };
