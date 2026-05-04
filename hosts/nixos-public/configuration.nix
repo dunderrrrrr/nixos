@@ -6,7 +6,6 @@
 }: let
   hotelsProjectRoot = "/home/hotels/hotels";
   swarjeProjectRoot = "/home/swarje/swarje";
-  deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   wcwpProjectRoot = "/home/emil/projects/wcwp";
   domanfluffProjectRoot = "/home/domanfluff/domanfluff";
 in {
@@ -125,21 +124,6 @@ in {
     };
     environment = {
       PATH = lib.mkForce "${swarjeProjectRoot}/.devenv/state/venv/bin/";
-    };
-    wantedBy = ["multi-user.target"];
-  };
-
-  systemd.services.deploy-dunderrrrrr-se = {
-    enable = true;
-    description = "Gunicorn instance to serve deploy.dunderrrrrr.se";
-    after = ["network.target"];
-    serviceConfig = {
-      User = "emil";
-      WorkingDirectory = deployProjectRoot;
-      ExecStart = "${deployProjectRoot}/.devenv/state/venv/bin/uvicorn main:app --port 8007";
-    };
-    environment = {
-      PATH = lib.mkForce "${deployProjectRoot}/.devenv/state/venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
