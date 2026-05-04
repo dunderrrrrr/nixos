@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  hotelsProjectRoot = "/home/emil/projects/hotels.dunderrrrrr.se/";
+  hotelsProjectRoot = "/home/hotels";
   swarjeProjectRoot = "/home/emil/projects/swarje.dunderrrrrr.se";
   deployProjectRoot = "/home/emil/projects/nixos-public-deployer";
   wcwpProjectRoot = "/home/emil/projects/wcwp";
@@ -13,6 +13,7 @@ in {
   imports = [
     ./caddy.nix
     ./hardware-configuration.nix
+    ./users.nix
   ];
 
   nix.extraOptions = ''
@@ -98,7 +99,8 @@ in {
     description = "Gunicorn instance to serve hotels.dunderrrrrr.se";
     after = ["network.target"];
     serviceConfig = {
-      User = "emil";
+      User = "hotels";
+      Group = "hotels";
       WorkingDirectory = hotelsProjectRoot;
       EnvironmentFile = "${hotelsProjectRoot}/.env";
       ExecStartPre = "${hotelsProjectRoot}/.venv/bin/python manage.py collectstatic --noinput";
