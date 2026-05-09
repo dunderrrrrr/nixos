@@ -31,6 +31,7 @@ in {
     caddy
     screen
     docker-compose
+    direnv
   ];
 
   services = {
