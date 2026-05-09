@@ -9,6 +9,7 @@ in {
   imports = [
     ./caddy.nix
     ./hardware-configuration.nix
+    ./users.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
