@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  blocketapiProjectRoot = "/home/emil/projects/blocket-api.se";
+  blocketapiProjectRoot = "/home/blocket/blocket-api.se";
 in {
   imports = [
     ./caddy.nix
@@ -127,12 +127,12 @@ in {
       description = "Gunicorn instance to serve the api";
       after = ["network.target"];
       serviceConfig = {
-        User = "emil";
+        User = "blocket";
         WorkingDirectory = blocketapiProjectRoot;
-        ExecStart = "/home/emil/projects/blocket-api.se/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8000 --access-logfile - --error-logfile - --log-level info";
+        ExecStart = "${blocketapiProjectRoot}/.venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker api:app -b 127.0.0.1:8000 --access-logfile - --error-logfile - --log-level info";
       };
       environment = {
-        PATH = lib.mkForce "/home/emil/projects/blocket-api.se/.venv/bin/";
+        PATH = lib.mkForce "${blocketapiProjectRoot}.venv/bin/";
       };
       wantedBy = ["multi-user.target"];
     };
