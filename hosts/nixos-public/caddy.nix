@@ -68,6 +68,13 @@
           file_server
         '';
       };
+      "staeder.dunderrrrrr.se" = {
+        extraConfig = ''
+          import secure_headers
+          reverse_proxy 127.0.0.1:8013
+          file_server
+        '';
+      };
     };
   };
 }
