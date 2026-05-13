@@ -73,7 +73,7 @@
         dark = "Gruvbox Dark Hard";
       };
       terminal.dock = "right";
-      features.edit_prediction_provider = "zed";
+      features.edit_prediction_provider = "none";
     };
   };
 
