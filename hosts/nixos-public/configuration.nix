@@ -8,6 +8,7 @@
   swarjeProjectRoot = "/home/swarje/swarje";
   wcwpProjectRoot = "/home/wcwp/wcwp";
   domanfluffProjectRoot = "/home/domanfluff/domanfluff";
+  staederProjectRoot = "/home/staeder/staeder";
 in {
   imports = [
     ./caddy.nix
@@ -105,7 +106,7 @@ in {
       User = "swarje";
       Group = "swarje";
       WorkingDirectory = swarjeProjectRoot;
-      ExecStart = "${swarjeProjectRoot}/.devenv/state/venv/bin/gunicorn -w 8 --bind 127.0.0.1:8002 run:app";
+      ExecStart = "${swarjeProjectRoot}/.devenv/state/venv/bin/gunicorn -w 4 --bind 127.0.0.1:8002 run:app";
     };
     environment = {
       PATH = lib.mkForce "${swarjeProjectRoot}/.devenv/state/venv/bin/";
@@ -142,6 +143,22 @@ in {
     environment = {
       PATH = lib.mkForce "${domanfluffProjectRoot}/.venv/bin/";
     };
+  };
+
+  systemd.services.staeder-dunderrrrrr-se = {
+    enable = true;
+    description = "Gunicorn instance to serve staeder.dunderrrrrr.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "staeder";
+      Group = "staeder";
+      WorkingDirectory = staederProjectRoot;
+      ExecStart = "${staederProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:8013 run:app";
+    };
+    environment = {
+      PATH = lib.mkForce "${staederProjectRoot}/.venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
   };
 
   system.stateVersion = "24.05";
