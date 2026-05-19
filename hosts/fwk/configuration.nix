@@ -112,7 +112,6 @@
       metasploit
       nmap
       kdePackages.kalk
-      john
       hashcat
       gemini-cli
       nixfmt
