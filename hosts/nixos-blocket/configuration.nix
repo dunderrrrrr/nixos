@@ -54,6 +54,26 @@ in {
     vector = {
       enable = true;
       settings = {
+        ## Host metrics
+        sources.host_metrics = {
+          type = "host_metrics";
+          collectors = ["cpu" "memory" "disk"];
+          scrape_interval_secs = 15;
+        };
+        transforms.metrics_to_log = {
+          type = "metric_to_log";
+          inputs = ["host_metrics"];
+        };
+        transforms.parse_host_metrics = {
+          type = "remap";
+          inputs = ["metrics_to_log"];
+          source = ''
+            ._msg = .name
+            .host = get_hostname!()
+          '';
+        };
+
+        ## Caddy
         sources.caddy_logs = {
           type = "file";
           include = ["/var/log/caddy/*.log"];
@@ -68,6 +88,8 @@ in {
                .request_path = split!(.request.uri, "?")[0]
           '';
         };
+
+        ## Sinks
         sinks.victorialogs = {
           type = "elasticsearch";
           inputs = ["parse_caddy"];
@@ -79,6 +101,11 @@ in {
             ProjectID = "0";
             VL-Stream-Fields = "host,logger";
           };
+        };
+        sinks.victoriametrics = {
+          type = "prometheus_remote_write";
+          inputs = ["host_metrics"];
+          endpoint = "http://127.0.0.1:8428/api/v1/write";
         };
       };
     };
@@ -117,6 +144,7 @@ in {
     "d /var/log/caddy 0755 caddy users -"
     "d /var/lib/victorialogs 0755 root root -"
     "d /var/lib/grafana 0755 472 472 -"
+    "d /var/lib/victoriametrics 0755 root root -"
   ];
 
   virtualisation.oci-containers.containers = {
@@ -144,6 +172,16 @@ in {
         GF_SERVER_DOMAIN = "logs.blocket-api.se";
         GF_INSTALL_PLUGINS = "victoriametrics-logs-datasource";
       };
+    };
+
+    victoriametrics = {
+      image = "victoriametrics/victoria-metrics:latest";
+      ports = ["127.0.0.1:8428:8428"];
+      volumes = ["/var/lib/victoriametrics:/storage"];
+      cmd = [
+        "-storageDataPath=/storage"
+        "-retentionPeriod=4w"
+      ];
     };
   };
 
