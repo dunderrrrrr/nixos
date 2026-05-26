@@ -2,21 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  jujutsu-pinned = pkgs.jujutsu.overrideAttrs (old: rec {
-    version = "0.41.0";
-    src = pkgs.fetchFromGitHub {
-      owner = "jj-vcs";
-      repo = "jj";
-      rev = "v${version}";
-      hash = "sha256-id35e2kzyHyXCRy0aomkd1l0K7qzD0RnzdAzxKUGiso=";
-    };
-    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
-      inherit src;
-      hash = "sha256-zWfdIac+SsNdfXAfD4NVTl7YfXzAlrK82KNduFgG1EA=";
-    };
-  });
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -121,7 +107,7 @@ in {
       docker
       yubikey-manager
       devenv
-      jujutsu-pinned
+      jujutsu
       gnome-disk-utility
       metasploit
       nmap
