@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./programs/vscode.nix
     ./programs/git.nix
     ./programs/jujutsu.nix
     ./programs/zed.nix
