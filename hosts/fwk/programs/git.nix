@@ -10,7 +10,7 @@
 
     settings = {
       user.name = "dunderrrrrr";
-      user.email = "emil.bjorkroth@gmail.com";
+      user.email = "emil.bjorkroth@proton.me";
 
       push.default = "current";
       pull.rebase = true;
