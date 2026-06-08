@@ -67,6 +67,9 @@
       };
       ui_font_size = 16;
       buffer_font_size = 15;
+      buffer_font_features = {
+        calt = false;
+      };
       theme = {
         mode = "dark";
         light = "Gruvbox Light";
