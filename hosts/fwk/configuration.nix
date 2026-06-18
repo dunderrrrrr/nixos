@@ -117,9 +117,15 @@
       nixfmt
       realvnc-vnc-viewer
       jjui
-      zed-editor
       ghostty
       jetbrains-mono
+      gram
+      # gram related
+      vscode-langservers-extracted
+      typescript-language-server
+      python313Packages.python-lsp-server
+      vtsls
+      ty
     ];
   };
 
