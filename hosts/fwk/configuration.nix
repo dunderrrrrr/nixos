@@ -126,6 +126,7 @@
       python313Packages.python-lsp-server
       vtsls
       ty
+      basedpyright
     ];
   };
 
