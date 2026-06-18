@@ -9,6 +9,7 @@
   wcwpProjectRoot = "/home/wcwp/wcwp";
   domanfluffProjectRoot = "/home/domanfluff/domanfluff";
   staederProjectRoot = "/home/staeder/staeder";
+  tagpulsProjectRoot = "/home/tagpuls/tagpuls";
 in {
   imports = [
     ./caddy.nix
@@ -157,6 +158,22 @@ in {
     };
     environment = {
       PATH = lib.mkForce "${staederProjectRoot}/.venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
+  systemd.services.tagpuls-dunderrrrrr-se = {
+    enable = true;
+    description = "Gunicorn instance to serve tagpuls.dunderrrrrr.se";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "tagpuls";
+      Group = "tagpuls";
+      WorkingDirectory = tagpulsProjectRoot;
+      ExecStart = "${tagpulsProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:8014 run:app";
+    };
+    environment = {
+      PATH = lib.mkForce "${tagpulsProjectRoot}/.venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };
