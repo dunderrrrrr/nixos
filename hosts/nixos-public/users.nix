@@ -16,7 +16,13 @@ in {
   users.groups = lib.genAttrs serviceUsers (_: {});
   users.users =
     lib.genAttrs serviceUsers mkServiceUser
+    # overrides below
     // {
+      tagpuls =
+        (mkServiceUser "tagpuls")
+        // {
+          extraGroups = ["docker"];
+        };
       emil = {
         isNormalUser = true;
         shell = pkgs.fish;
