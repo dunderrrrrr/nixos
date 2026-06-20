@@ -78,7 +78,7 @@
       "tagpuls.dunderrrrrr.se" = {
         extraConfig = ''
           import secure_headers
-          reverse_proxy 127.0.0.1:8014
+          reverse_proxy 127.0.0.1:8015
           file_server
         '';
       };
