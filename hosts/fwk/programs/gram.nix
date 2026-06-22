@@ -76,7 +76,7 @@
     }
   ];
 
-  home.file.".config/gram/snippets/python.jsonc".text = builtins.toJSON {
+  home.file.".config/gram/snippets/python.json".text = builtins.toJSON {
     pin = {
       prefix = "pin";
       body = ["personal_identification_number"];
