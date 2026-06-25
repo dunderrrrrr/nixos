@@ -82,6 +82,28 @@
           file_server
         '';
       };
+
+      "http://chat.rosamjolk.se" = {
+        extraConfig = ''
+          log {
+            output discard
+          }
+          reverse_proxy /.well-known/acme-challenge/* 127.0.0.1:8402
+          redir https://{host}{uri} 301
+        '';
+      };
+
+      "chat.rosamjolk.se" = {
+        extraConfig = ''
+          log {
+            output discard
+          }
+          reverse_proxy /new 127.0.0.1:8403
+          file_server {
+            root /var/lib/deltachat/www
+          }
+        '';
+      };
     };
   };
 }

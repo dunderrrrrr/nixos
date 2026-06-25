@@ -21,6 +21,7 @@
     nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./modules/deltachat-server.nix
         ./hosts/nixos-public/configuration.nix
         ./hosts/_shared_configs/config.nix
 

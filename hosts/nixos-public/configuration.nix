@@ -32,6 +32,9 @@ in {
     22228
     80
     443
+    25
+    587
+    993
   ];
 
   services.openssh = {
@@ -42,6 +45,11 @@ in {
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
     };
+  };
+  service.deltachat-server = {
+    enable = true;
+    domain = "chat.rosamjolk.se";
+    acmeEmail = "noreply@rosamjolk.se";
   };
 
   virtualisation.docker = {
