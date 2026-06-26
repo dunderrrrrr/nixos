@@ -54,6 +54,8 @@
     };
 
     features.edit_prediction_provider = "none";
+
+    excerpt_context_lines = 5;
   };
 
   home.file.".config/gram/keymap.jsonc".text = builtins.toJSON [
