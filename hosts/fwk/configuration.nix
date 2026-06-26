@@ -72,6 +72,8 @@
     pulse.enable = true;
   };
 
+  programs.nix-ld.enable = true;
+
   programs.ssh.startAgent = true;
 
   programs.gnupg.agent = {
@@ -121,6 +123,8 @@
       jetbrains-mono
       gram
       # gram related
+      clang
+      rustup
       vscode-langservers-extracted
       typescript-language-server
       python313Packages.python-lsp-server
