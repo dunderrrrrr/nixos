@@ -46,7 +46,7 @@ in {
       PermitRootLogin = "no";
     };
   };
-  service.deltachat-server = {
+  services.deltachat-relay = {
     enable = true;
     domain = "chat.rosamjolk.se";
     acmeEmail = "noreply@rosamjolk.se";

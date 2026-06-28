@@ -81,6 +81,26 @@
         "type": "github"
       }
     },
+    "nixos-deltachat-relay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782667672,
+        "narHash": "sha256-WtvE0OH0TblL+ZVcDAJfSht9It/fQt8J4YG4SWo+oxI=",
+        "owner": "dunderrrrrr",
+        "repo": "nixos-deltachat-relay",
+        "rev": "c56039621cfb61453744dc569b6db09fc2930157",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dunderrrrrr",
+        "repo": "nixos-deltachat-relay",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1781074563,
@@ -101,6 +121,7 @@
       "inputs": {
         "alejandra": "alejandra",
         "home-manager": "home-manager",
+        "nixos-deltachat-relay": "nixos-deltachat-relay",
         "nixpkgs": "nixpkgs"
       }
     },

@@ -9,6 +9,9 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-deltachat-relay.url = "github:dunderrrrrr/nixos-deltachat-relay";
+    nixos-deltachat-relay.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -16,12 +19,13 @@
     nixpkgs,
     home-manager,
     alejandra,
+    nixos-deltachat-relay,
     ...
   } @ inputs: {
     nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./modules/deltachat-server.nix
+        nixos-deltachat-relay.nixosModules.deltachat-relay
         ./hosts/nixos-public/configuration.nix
         ./hosts/_shared_configs/config.nix
 
