@@ -5,6 +5,7 @@
   ...
 }: let
   blocketapiProjectRoot = "/home/blocket/blocket-api.se";
+  blocketDocsProjectRoot = "/home/blocket/blocket_api";
 in {
   imports = [
     ./caddy.nix
@@ -136,6 +137,20 @@ in {
       };
       environment = {
         PATH = lib.mkForce "${blocketapiProjectRoot}.venv/bin/";
+      };
+      wantedBy = ["multi-user.target"];
+    };
+    docs = {
+      enable = true;
+      description = "Gunicorn instance to serve the docs";
+      after = ["network.target"];
+      serviceConfig = {
+        User = "blocket";
+        WorkingDirectory = blocketDocsProjectRoot;
+        ExecStart = "${blocketDocsProjectRoot}/.venv/bin/gunicorn docs.app:app --workers 2 -b 127.0.0.1:8001 --access-logfile - --error-logfile - --log-level info";
+      };
+      environment = {
+        PATH = lib.mkForce "${blocketDocsProjectRoot}.venv/bin/";
       };
       wantedBy = ["multi-user.target"];
     };

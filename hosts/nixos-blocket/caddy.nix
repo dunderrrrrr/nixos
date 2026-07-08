@@ -33,15 +33,15 @@
             level INFO
           }
 
-          root * /srv/blocket-api/
-          file_server
-
           handle /ads.txt {
             respond "google.com, pub-5870606260695974, DIRECT, f08c47fec0942fa0" 200
           }
 
           @api path /v1* /swagger*
           reverse_proxy @api http://127.0.0.1:8000
+
+          @docs path / /_/* /quickstart /python /endpoints /changelog /robots.txt /sitemap.xml /static/*
+          reverse_proxy @docs http://127.0.0.1:8001
 
           handle_errors 404 {
             rewrite * /404.html
