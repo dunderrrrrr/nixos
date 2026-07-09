@@ -117,7 +117,6 @@
       hashcat
       gemini-cli
       nixfmt
-      realvnc-vnc-viewer
       jjui
       ghostty
       jetbrains-mono
