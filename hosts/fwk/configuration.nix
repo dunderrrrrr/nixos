@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./programs/jj-github-send.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
