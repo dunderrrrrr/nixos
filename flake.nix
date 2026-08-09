@@ -77,5 +77,29 @@
           pre-commit install --overwrite
         '';
       };
+
+    apps.x86_64-linux.deploy = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      deployScript = pkgs.writeShellApplication {
+        name = "deploy";
+        runtimeInputs = [pkgs.openssh];
+        text = ''
+          if [ $# -lt 1 ]; then
+            echo "Usage: deploy <host>[,<host>...]" >&2
+            exit 1
+          fi
+
+          IFS=',' read -ra HOSTS <<< "$1"
+
+          for host in "''${HOSTS[@]}"; do
+            echo "==> Deploying $host"
+            ssh -t "emil@$host" "cd ~/nix && git pull && sudo nixos-rebuild switch --flake .#$host"
+          done
+        '';
+      };
+    in {
+      type = "app";
+      program = "${deployScript}/bin/deploy";
+    };
   };
 }

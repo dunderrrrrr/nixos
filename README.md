@@ -9,6 +9,12 @@ $ git clone git@github.com:dunderrrrrr/nixos.git
 $ cd nixos && sudo nixos-rebuild switch --flake .#[host]
 ```
 
+## Deploy on remotes
+
+```
+nix run .#deploy <host>,<host>
+```
+
 ```
 @@@@@@@@@@@@@@@@@@#(((((((%@@@@@@@@************@@@@@@@********@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@(((((((((((&@@@@@@@*************@@@************@@@@@@@@@@@@@@@@
