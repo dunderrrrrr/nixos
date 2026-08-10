@@ -10,6 +10,15 @@
   domanfluffProjectRoot = "/home/domanfluff/domanfluff";
   staederProjectRoot = "/home/staeder/staeder";
   tagpulsProjectRoot = "/home/tagpuls/tagpuls";
+
+  deltachatAccountsScript = pkgs.writeScript "deltachat-accounts" ''
+    #!${pkgs.python3}/bin/python3
+    ${builtins.readFile ./scripts/deltachat-accounts.py}
+  '';
+  deltachatAccountsTool = pkgs.runCommand "deltachat-accounts" {} ''
+    mkdir -p $out/bin
+    ln -s ${deltachatAccountsScript} $out/bin/deltachat-accounts
+  '';
 in {
   imports = [
     ./caddy.nix
@@ -87,6 +96,7 @@ in {
     screen
     docker-compose
     direnv
+    deltachatAccountsTool
   ];
 
   systemd.services.hotels-dunderrrrrr-se = {
