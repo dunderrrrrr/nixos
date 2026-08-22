@@ -75,14 +75,6 @@
           file_server
         '';
       };
-      "tagpuls.dunderrrrrr.se" = {
-        extraConfig = ''
-          import secure_headers
-          reverse_proxy 127.0.0.1:8015
-          file_server
-        '';
-      };
-
       "http://chat.rosamjolk.se" = {
         extraConfig = ''
           log {

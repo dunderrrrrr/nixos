@@ -9,7 +9,6 @@
   wcwpProjectRoot = "/home/wcwp/wcwp";
   domanfluffProjectRoot = "/home/domanfluff/domanfluff";
   staederProjectRoot = "/home/staeder/staeder";
-  tagpulsProjectRoot = "/home/tagpuls/tagpuls";
 
   deltachatAccountsScript = pkgs.writeScript "deltachat-accounts" ''
     #!${pkgs.python3}/bin/python3

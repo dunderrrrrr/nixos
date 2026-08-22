@@ -4,7 +4,7 @@
   ...
 }: let
   constants = import ../_shared_configs/constants.nix;
-  serviceUsers = ["hotels" "swarje" "domanfluff" "wcwp" "staeder" "tagpuls" "ha-backups"];
+  serviceUsers = ["hotels" "swarje" "domanfluff" "wcwp" "staeder" "ha-backups"];
   mkServiceUser = name: {
     isSystemUser = true;
     group = name;
@@ -18,11 +18,6 @@ in {
     lib.genAttrs serviceUsers mkServiceUser
     # overrides below
     // {
-      tagpuls =
-        (mkServiceUser "tagpuls")
-        // {
-          extraGroups = ["docker"];
-        };
       emil = {
         isNormalUser = true;
         shell = pkgs.fish;
