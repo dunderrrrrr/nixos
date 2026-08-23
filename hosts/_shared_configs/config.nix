@@ -20,5 +20,6 @@
     nanorc
     fd
     ripgrep
+    dua
   ];
 }
