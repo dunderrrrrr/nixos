@@ -57,8 +57,7 @@
       "brygglogg.dunderrrrrr.se" = {
         extraConfig = ''
           import secure_headers
-          reverse_proxy 127.0.0.1:8011
-          file_server
+          redir https://bryggis.se{uri} permanent
         '';
       };
       "bryggis.se" = {
