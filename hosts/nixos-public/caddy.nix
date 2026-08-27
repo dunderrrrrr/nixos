@@ -63,15 +63,8 @@
       "bryggis.se" = {
         extraConfig = ''
           import secure_headers
-
-          handle /remark-custom.css {
-              root * /var/lib/remark-custom
-              file_server
-          }
-
-          handle {
-              reverse_proxy 127.0.0.1:8011
-              file_server
+          reverse_proxy 127.0.0.1:8011
+          file_server
           }
         '';
       };
