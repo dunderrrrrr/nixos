@@ -100,6 +100,20 @@ in {
     };
   };
 
+  services.caddy = {
+    group = "users";
+    enable = true;
+
+    virtualHosts = {
+      "esp.ha.home" = {
+        extraConfig = ''
+          reverse_proxy localhost:6052
+          tls internal
+        '';
+      };
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.11";
 }
