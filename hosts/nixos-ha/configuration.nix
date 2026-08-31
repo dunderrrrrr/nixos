@@ -9,6 +9,12 @@ in {
     ./hardware-configuration.nix
   ];
 
+  networking.firewall.allowedTCPPorts = [
+    8123
+    80
+    443
+  ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -61,11 +67,25 @@ in {
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.fish;
     packages = with pkgs; [
       git
     ];
+  };
+
+  systemd.services.homeassistant-api = {
+    description = "FastAPI for HomeAssistant";
+    after = ["network.target"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      User = "emil";
+      # Group = "dock";
+      WorkingDirectory = "/home/emil/ha_api";
+      ExecStart = "/home/emil/ha_api/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000";
+      Restart = "always";
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
