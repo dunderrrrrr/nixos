@@ -30,6 +30,12 @@
 
   virtualisation.docker.enable = true;
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.swtpm.enable = true;
+  };
+  programs.virt-manager.enable = true;
+
   services.pcscd.enable = true; # yubikey support
 
   time.timeZone = "Europe/Stockholm";
@@ -90,6 +96,7 @@
       "wheel"
       "docker"
       "dialout"
+      "libvirtd"
     ];
     shell = pkgs.fish;
     packages = with pkgs; [
