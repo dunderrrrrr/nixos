@@ -88,6 +88,18 @@ in {
     };
   };
 
+  systemd.services.cloudflared-tunnel = {
+    description = "Cloudflare Tunnel";
+    after = ["network.target"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel run --token \${TUNNEL_TOKEN}";
+      EnvironmentFile = "/run/secrets/cloudflared-token";
+      Restart = "always";
+      DynamicUser = true;
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.11";
 }
