@@ -13,6 +13,20 @@
       bind alt-backspace backward-kill-word
       set -g fish_word_delimiters " \t\n\"'()[]{}<>|;:@/"
 
+      switch (hostname)
+        case "emil-fwk"
+          set -g fish_color_host white
+          set -g fish_color_host_remote white
+        case "nixos-ha"
+          set -g fish_color_host magenta
+          set -g fish_color_host_remote magenta
+        case "nixos-blocket"
+          set -g fish_color_host red
+          set -g fish_color_host_remote red
+        case "nixos-public"
+          set -g fish_color_host blue
+          set -g fish_color_host_remote blue
+      end
     '';
     shellAbbrs = {
       gpf = "git push --force-with-lease";
