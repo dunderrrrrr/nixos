@@ -94,7 +94,7 @@ in {
     wantedBy = ["multi-user.target"];
     serviceConfig = {
       ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel run --token \${TUNNEL_TOKEN}";
-      EnvironmentFile = "/run/secrets/cloudflared-token";
+      EnvironmentFile = "/etc/cloudflared/secret";
       Restart = "always";
       DynamicUser = true;
     };
