@@ -18,14 +18,14 @@
           set -g fish_color_host white
           set -g fish_color_host_remote white
         case "nixos-ha"
-          set -g fish_color_host magenta
-          set -g fish_color_host_remote magenta
+          set -g fish_color_host blue
+          set -g fish_color_host_remote blue
         case "nixos-blocket"
           set -g fish_color_host red
           set -g fish_color_host_remote red
         case "nixos-public"
-          set -g fish_color_host blue
-          set -g fish_color_host_remote blue
+          set -g fish_color_host magenta
+          set -g fish_color_host_remote magenta
       end
     '';
     shellAbbrs = {
