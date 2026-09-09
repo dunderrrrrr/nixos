@@ -65,7 +65,6 @@
           import secure_headers
           reverse_proxy 127.0.0.1:8011
           file_server
-          }
         '';
       };
       "c.bryggis.se" = {
