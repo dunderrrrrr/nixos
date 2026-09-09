@@ -80,11 +80,11 @@ in {
 
   console.keyMap = "sv-latin1";
 
-  services.journald.extraConfig = ''
-    SystemMaxUse=300M
-    SystemMaxFileSize=40M
-    MaxRetentionSec=4day
-  '';
+  services.journald.settings.Journal = {
+    SystemMaxUse = "300M";
+    SystemMaxFileSize = "40M";
+    MaxRetentionSec = "4day";
+  };
 
   environment.systemPackages = with pkgs; [
     jq
