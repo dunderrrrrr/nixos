@@ -46,11 +46,11 @@ in {
       };
     };
 
-    journald.extraConfig = ''
-      SystemMaxUse=300M
-      SystemMaxFileSize=40M
-      MaxRetentionSec=4day
-    '';
+    journald.settings.Journal = {
+      SystemMaxUse = "300M";
+      SystemMaxFileSize = "40M";
+      MaxRetentionSec = "4day";
+    };
 
     vector = {
       enable = true;
