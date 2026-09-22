@@ -138,6 +138,7 @@
       vtsls
       ty
       basedpyright
+      sops
     ];
   };
 
