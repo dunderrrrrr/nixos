@@ -123,7 +123,6 @@
       nmap
       kdePackages.kalk
       hashcat
-      gemini-cli
       nixfmt
       jjui
       ghostty
