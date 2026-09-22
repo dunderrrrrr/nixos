@@ -18,12 +18,32 @@
     mkdir -p $out/bin
     ln -s ${deltachatAccountsScript} $out/bin/deltachat-accounts
   '';
+
+  brygglogBackupScript = pkgs.writeScript "brygglogg-backup" ''
+    #!${pkgs.stdenv.shell}
+    ${builtins.readFile ./scripts/brygglogg-backup.sh}
+  '';
 in {
   imports = [
     ./caddy.nix
     ./hardware-configuration.nix
     ./users.nix
   ];
+
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+
+    secrets = {
+      brygglogg_s3_access_key_id = {};
+      brygglogg_s3_secret_access_key = {};
+    };
+
+    templates."brygglogg-backup.env".content = ''
+      RCLONE_CONFIG_S3_ACCESS_KEY_ID=${config.sops.placeholder.brygglogg_s3_access_key_id}
+      RCLONE_CONFIG_S3_SECRET_ACCESS_KEY=${config.sops.placeholder.brygglogg_s3_secret_access_key}
+    '';
+  };
 
   nix.extraOptions = ''
     connect-timeout = 5
@@ -96,6 +116,7 @@ in {
     docker-compose
     direnv
     deltachatAccountsTool
+    rclone
   ];
 
   systemd.services.hotels-dunderrrrrr-se = {
@@ -177,6 +198,29 @@ in {
       PATH = lib.mkForce "${staederProjectRoot}/.venv/bin/";
     };
     wantedBy = ["multi-user.target"];
+  };
+
+  systemd.services.brygglogg-backup = {
+    description = "Backup brygglogg (Ghost) to S3";
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+    path = [pkgs.rclone pkgs.gnutar pkgs.gzip];
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      EnvironmentFile = config.sops.templates."brygglogg-backup.env".path;
+      ExecStart = "${brygglogBackupScript}";
+    };
+  };
+
+  systemd.timers.brygglogg-backup = {
+    description = "Daily backup of brygglogg (Ghost) to S3";
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      RandomizedDelaySec = "15min";
+    };
   };
 
   system.stateVersion = "24.05";

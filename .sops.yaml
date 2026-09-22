@@ -1,0 +1,10 @@
+keys:
+  - &emil_fwk age10gxgzveclu0npz636l8jdaeqaadkpl6ncztmqmhhg6kll4tep9psalfz35
+  - &host_nixos_public age1we2jrnj7qnuzeym0pj73a9ppcx79xakf5q5anq9cm7a6nj9ey4xspc7j3v
+
+creation_rules:
+  - path_regex: hosts/nixos-public/secrets\.yaml$
+    key_groups:
+      - age:
+          - *emil_fwk
+          - *host_nixos_public

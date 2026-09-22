@@ -12,6 +12,9 @@
 
     nixos-deltachat-relay.url = "github:dunderrrrrr/nixos-deltachat-relay";
     nixos-deltachat-relay.inputs.nixpkgs.follows = "nixpkgs";
+
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -20,12 +23,14 @@
     home-manager,
     alejandra,
     nixos-deltachat-relay,
+    sops-nix,
     ...
   } @ inputs: {
     nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         nixos-deltachat-relay.nixosModules.deltachat-relay
+        sops-nix.nixosModules.sops
         ./hosts/nixos-public/configuration.nix
         ./hosts/_shared_configs/config.nix
 
