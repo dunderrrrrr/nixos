@@ -20,6 +20,12 @@
       calt = false;
     };
 
+    indent_guides = {
+      enabled = true;
+      coloring = "indent_aware";
+      background_coloring = "indent_aware";
+    };
+
     sticky_scroll = {enabled = true;};
     minimap = {show = "always";};
     smooth_scrolling = true;
