@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -54,9 +55,21 @@
   };
 
   services.xserver.enable = true;
+  services.greetd = {
+    enable = true;
+    settings.default_session.command = "${pkgs.noctalia-greeter}/bin/noctalia-greeter-session -- --session Niri";
+  };
 
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  programs.niri.enable = true;
+  services.displayManager.defaultSession = lib.mkForce "niri";
+
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+
+  programs.noctalia = {
+    enable = true;
+    recommendedServices.enable = true;
+  };
 
   services.xserver.xkb = {
     layout = "se";
@@ -80,8 +93,6 @@
   };
 
   programs.nix-ld.enable = true;
-
-  programs.ssh.startAgent = true;
 
   programs.gnupg.agent = {
     enable = true;
@@ -140,6 +151,9 @@
       sops
     ];
   };
+
+  fonts.packages = [pkgs.jetbrains-mono];
+  fonts.fontconfig.defaultFonts.monospace = ["JetBrains Mono"];
 
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.11";

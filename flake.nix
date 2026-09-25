@@ -15,6 +15,11 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -24,6 +29,7 @@
     alejandra,
     nixos-deltachat-relay,
     sops-nix,
+    noctalia,
     ...
   } @ inputs: {
     nixosConfigurations.nixos-public = nixpkgs.lib.nixosSystem {
@@ -59,13 +65,14 @@
     nixosConfigurations.fwk = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        noctalia.nixosModules.default
         ./hosts/fwk/configuration.nix
         ./hosts/_shared_configs/config.nix
-
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.sharedModules = [noctalia.homeModules.default];
           home-manager.users.emil = import ./hosts/fwk/home.nix;
         }
       ];
