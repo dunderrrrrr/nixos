@@ -79,6 +79,15 @@
         _props.hotkey-overlay-title = "Open Slack";
         spawn = ["slack"];
       };
+
+      binds."Mod+Down" = {
+        _props.hotkey-overlay-title = "Focus Workspace Below";
+        focus-workspace-down = {};
+      };
+      binds."Mod+Up" = {
+        _props.hotkey-overlay-title = "Focus Workspace Above";
+        focus-workspace-up = {};
+      };
     };
   };
 
