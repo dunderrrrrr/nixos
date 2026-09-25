@@ -45,6 +45,10 @@
         capsule_fill = "surface_variant";
         capsule_opacity = 0.6;
       };
+
+      widget.date = {
+        format = "{:%Y-%m-%d}";
+      };
     };
   };
 }

@@ -72,6 +72,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-bak";
           home-manager.sharedModules = [noctalia.homeModules.default];
           home-manager.users.emil = import ./hosts/fwk/home.nix;
         }
