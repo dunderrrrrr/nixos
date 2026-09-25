@@ -88,6 +88,10 @@
         _props.hotkey-overlay-title = "Focus Workspace Above";
         focus-workspace-up = {};
       };
+      binds."Mod+F" = {
+        _props.hotkey-overlay-title = "Maximize window";
+        maximize-window-to-edges = {};
+      };
     };
   };
 
