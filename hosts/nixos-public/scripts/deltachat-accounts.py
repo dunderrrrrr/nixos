@@ -109,7 +109,7 @@ def fetch_sent_log(addr, since="2 days ago"):
     return rows[:MAX_LOG_ROWS]
 
 
-def draw(stdscr, accounts, selected, status):
+def draw(stdscr, accounts, selected, top, status):
     stdscr.erase()
     h, w = stdscr.getmaxyx()
     stdscr.addstr(
@@ -121,13 +121,16 @@ def draw(stdscr, accounts, selected, status):
         "up/down move  space toggle  right log  q quit".ljust(w - 1)[: w - 1],
     )
 
-    for i, addr in enumerate(accounts):
-        row = 3 + i
-        if row >= h - 2:
+    visible_h = h - 4
+    for i in range(visible_h):
+        idx = top + i
+        if idx >= len(accounts):
             break
+        addr = accounts[idx]
+        row = 3 + i
         disabled = is_disabled(addr)
         label = "DISABLED" if disabled else "enabled "
-        attr = curses.A_REVERSE if i == selected else curses.A_NORMAL
+        attr = curses.A_REVERSE if idx == selected else curses.A_NORMAL
         if disabled:
             attr |= curses.color_pair(1)
         line = f"[{label}] {addr}"
@@ -175,6 +178,7 @@ def main(stdscr):
 
     accounts = list_accounts()
     selected = 0
+    top = 0
     status = f"{len(accounts)} account(s)"
     mode = "list"
     log_addr = None
@@ -184,7 +188,7 @@ def main(stdscr):
 
     while True:
         if mode == "list":
-            draw(stdscr, accounts, selected, status)
+            draw(stdscr, accounts, selected, top, status)
             if not accounts:
                 key = stdscr.getch()
                 if key in (ord("q"), 27):
@@ -195,9 +199,17 @@ def main(stdscr):
             if key in (ord("q"), 27):
                 return
             elif key in (curses.KEY_UP, ord("k")):
-                selected = max(0, selected - 1)
+                if selected > 0:
+                    selected -= 1
+                    if selected < top:
+                        top = selected
             elif key in (curses.KEY_DOWN, ord("j")):
-                selected = min(len(accounts) - 1, selected + 1)
+                if selected < len(accounts) - 1:
+                    selected += 1
+                    h, _ = stdscr.getmaxyx()
+                    visible_h = h - 4
+                    if selected >= top + visible_h:
+                        top = selected - visible_h + 1
             elif key == ord(" "):
                 addr = accounts[selected]
                 try:
