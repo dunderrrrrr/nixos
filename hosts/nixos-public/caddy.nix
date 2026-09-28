@@ -88,6 +88,18 @@
           file_server
         '';
       };
+      "rosamjolk.se" = {
+        extraConfig = ''
+          import secure_headers
+          redir https://chat.rosamjolk.se{uri} permanent
+        '';
+      };
+      "rosamjölk.se" = {
+        extraConfig = ''
+          import secure_headers
+          redir https://chat.rosamjolk.se{uri} permanent
+        '';
+      };
       "http://chat.rosamjolk.se" = {
         extraConfig = ''
           log {
