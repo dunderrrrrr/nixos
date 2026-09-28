@@ -81,12 +81,12 @@
       };
 
       binds."Mod+Down" = {
-        _props.hotkey-overlay-title = "Focus Workspace Below";
-        focus-workspace-down = {};
+        _props.hotkey-overlay-title = "Focus Window Below";
+        focus-window-or-workspace-down = {};
       };
       binds."Mod+Up" = {
-        _props.hotkey-overlay-title = "Focus Workspace Above";
-        focus-workspace-up = {};
+        _props.hotkey-overlay-title = "Focus Window Above";
+        focus-window-or-workspace-up = {};
       };
       binds."Mod+F" = {
         _props.hotkey-overlay-title = "Maximize window";
