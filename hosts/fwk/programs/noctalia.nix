@@ -17,7 +17,16 @@
       bar.main = {
         margin_ends = 0;
         margin_edge = 0;
+        concave_edge_corners = false;
+        radius = 0;
 
+        start = [
+          "session"
+          "launcher"
+          "power_profile"
+          "wallpaper"
+          "workspaces"
+        ];
         center = [
           "date"
           "clock"
@@ -25,6 +34,7 @@
         ];
         end = [
           "cpu"
+          "ram"
           "network_rx"
           "network_tx"
           "spacer"
@@ -48,6 +58,15 @@
 
       widget.date = {
         format = "{:%Y-%m-%d}";
+      };
+
+      widget.weather = {
+        show_condition = false;
+      };
+
+      widget.ram = {
+        type = "sysmon";
+        stat = "ram_pct";
       };
     };
   };
