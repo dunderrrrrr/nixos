@@ -1,4 +1,11 @@
-{...}: {
+{pkgs, ...}: let
+  ostgotapendeln-next-train = pkgs.fetchFromGitHub {
+    owner = "dunderrrrrr";
+    repo = "noctalia-ostgotapendel";
+    rev = "main";
+    hash = "sha256-tjOyhhBfbD8RDfivFEqpzaHkB9Nzgn17lpQ33IKM1zM=";
+  };
+in {
   programs.noctalia = {
     enable = true;
     systemd.enable = true;
@@ -26,6 +33,7 @@
           "power_profile"
           "wallpaper"
           "workspaces"
+          "dunderrrrrr/ostgotapendeln_next_train:bar"
         ];
         center = [
           "date"
@@ -70,4 +78,6 @@
       };
     };
   };
+  xdg.dataFile."noctalia/plugins/ostgotapendeln_next_train".source =
+    ostgotapendeln-next-train;
 }
