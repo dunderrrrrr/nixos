@@ -3,7 +3,7 @@
     owner = "dunderrrrrr";
     repo = "noctalia-ostgotapendel";
     rev = "main";
-    hash = "sha256-tjOyhhBfbD8RDfivFEqpzaHkB9Nzgn17lpQ33IKM1zM=";
+    hash = "sha256-shqU44KPoHemnFNo4JdON4yZ+JJLHRbqMTUNYqKi56s=";
   };
 in {
   programs.noctalia = {
