@@ -10,6 +10,8 @@
 
   home.stateVersion = "23.11";
 
+  home.file."Pictures/screenshots/.keep".text = "";
+
   gtk.enable = true;
 
   home.pointerCursor = {

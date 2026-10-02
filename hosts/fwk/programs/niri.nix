@@ -80,6 +80,15 @@
         spawn = ["slack"];
       };
 
+      binds."Print" = {
+        _props.hotkey-overlay-title = "Screenshot (region, annotate)";
+        spawn = [
+          "sh"
+          "-c"
+          "grim -g \"$(slurp)\" - | satty --filename - --output-filename ~/Pictures/screenshots/satty-$(date +%Y%m%d-%H%M%S).png --early-exit --initial-tool brush --copy-command 'wl-copy'"
+        ];
+      };
+
       binds."Mod+Down" = {
         _props.hotkey-overlay-title = "Focus Window Below";
         focus-window-or-workspace-down = {};

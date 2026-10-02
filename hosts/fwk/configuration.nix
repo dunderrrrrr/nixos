@@ -139,6 +139,10 @@
       ghostty
       jetbrains-mono
       gram
+      grim
+      slurp
+      satty
+      wl-clipboard
       # gram related
       clang
       rustup
