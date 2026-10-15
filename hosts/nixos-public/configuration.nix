@@ -9,6 +9,7 @@
   wcwpProjectRoot = "/home/wcwp/wcwp";
   domanfluffProjectRoot = "/home/domanfluff/domanfluff";
   staederProjectRoot = "/home/staeder/staeder";
+  davidProjectRoot = "/home/david/davidddddd";
 
   deltachatAccountsScript = pkgs.writeScript "deltachat-accounts" ''
     #!${pkgs.python3}/bin/python3
@@ -119,6 +120,11 @@ in {
     rclone
   ];
 
+  systemd.services.caddy.serviceConfig = {
+    ProtectHome = lib.mkForce "tmpfs";
+    BindReadOnlyPaths = ["/home/david/davidddddd/static"];
+  };
+
   systemd.services.hotels-dunderrrrrr-se = {
     enable = true;
     description = "Gunicorn instance to serve hotels.dunderrrrrr.se";
@@ -165,6 +171,22 @@ in {
     };
     environment = {
       PATH = lib.mkForce "${wcwpProjectRoot}/.venv/bin/";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
+  systemd.services.david = {
+    enable = true;
+    description = "Gunicorn instance to serve david";
+    after = ["network.target"];
+    serviceConfig = {
+      User = "david";
+      Group = "david";
+      WorkingDirectory = davidProjectRoot;
+      ExecStart = "${davidProjectRoot}/.venv/bin/gunicorn -w 4 --bind 127.0.0.1:5555 app:app";
+    };
+    environment = {
+      PATH = lib.mkForce "${davidProjectRoot}/.venv/bin/";
     };
     wantedBy = ["multi-user.target"];
   };

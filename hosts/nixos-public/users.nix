@@ -4,7 +4,7 @@
   ...
 }: let
   constants = import ../_shared_configs/constants.nix;
-  serviceUsers = ["hotels" "swarje" "domanfluff" "wcwp" "staeder" "ha-backups"];
+  serviceUsers = ["hotels" "swarje" "domanfluff" "wcwp" "staeder" "ha-backups" "david"];
   mkServiceUser = name: {
     isSystemUser = true;
     group = name;

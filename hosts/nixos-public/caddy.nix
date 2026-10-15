@@ -32,6 +32,22 @@
           }'';
       };
 
+      "david.dunderrrrrr.se" = {
+        extraConfig = ''
+          import secure_headers
+
+          basic_auth {
+            david $2a$14$qV2MKnMSJupagDhIlk/QlOvzuJE2xaHustXP8AvARQJCOWwLHAjjq
+          }
+          reverse_proxy 127.0.0.1:5555
+
+          handle_path /static/* {
+            root * /home/david/davidddddd/static
+            file_server
+          }
+        '';
+      };
+
       "swarje.dunderrrrrr.se" = {
         extraConfig = ''
           import secure_headers
