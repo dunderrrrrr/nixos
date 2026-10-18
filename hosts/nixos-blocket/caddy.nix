@@ -55,6 +55,12 @@
           reverse_proxy http://127.0.0.1:3000
         '';
       };
+      "webhooks.blocket-api.se" = {
+        extraConfig = ''
+          import secure_headers
+          reverse_proxy http://127.0.0.1:8010
+        '';
+      };
     };
   };
 }
