@@ -13,7 +13,12 @@
     shell = pkgs.fish;
   };
 in {
-  users.groups = lib.genAttrs serviceUsers (_: {}) // {vector = {};};
+  users.groups =
+    lib.genAttrs serviceUsers (_: {})
+    // {
+      vector = {};
+      docker.members = ["blocket"];
+    };
   users.users =
     lib.genAttrs serviceUsers mkServiceUser
     // {
