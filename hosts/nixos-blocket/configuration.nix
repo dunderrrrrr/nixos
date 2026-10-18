@@ -112,6 +112,8 @@ in {
     };
   };
 
+  virtualisation.docker.enable = true;
+
   time.timeZone = "Europe/Stockholm";
 
   nix.settings.experimental-features = [
