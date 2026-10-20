@@ -18,6 +18,11 @@
   '';
   networking.networkmanager.enable = true;
 
+  security.polkit.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -143,6 +148,7 @@
       slurp
       satty
       wl-clipboard
+      networkmanagerapplet
       # gram related
       clang
       rustup

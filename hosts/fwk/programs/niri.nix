@@ -38,6 +38,7 @@
 
       _children = [
         {spawn-at-startup._args = ["noctalia-shell"];}
+        {spawn-at-startup._args = ["nm-applet" "--indicator"];}
         {
           recent-windows.previews = {
             max-height = 120;
