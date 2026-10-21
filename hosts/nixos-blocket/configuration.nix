@@ -87,6 +87,7 @@ in {
             ._msg = .msg
                .country = string!(.request.headers."Cf-Ipcountry"[0])
                .request_path = split!(.request.uri, "?")[0]
+               .domain = string!(.request.host)
           '';
         };
 
