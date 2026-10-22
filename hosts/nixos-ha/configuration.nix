@@ -110,6 +110,7 @@ in {
       proxy-forwarded-header = "CF-Connecting-IP";
       auth-default-access = "deny-all";
       enable-login = true;
+      require-login = true;
     };
   };
 
