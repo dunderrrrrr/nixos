@@ -25,7 +25,7 @@ in {
       vector = {
         isSystemUser = true;
         group = "vector";
-        extraGroups = ["users"];
+        extraGroups = ["users" "docker"];
       };
       emil = {
         isNormalUser = true;

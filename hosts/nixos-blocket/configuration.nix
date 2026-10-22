@@ -91,17 +91,31 @@ in {
           '';
         };
 
+        ## Docker
+        sources.docker_logs = {
+          type = "docker_logs";
+        };
+        transforms.parse_docker = {
+          type = "remap";
+          inputs = ["docker_logs"];
+          source = ''
+            ._msg = .message
+            .logger = "docker"
+            .host = get_hostname!()
+          '';
+        };
+
         ## Sinks
         sinks.victorialogs = {
           type = "elasticsearch";
-          inputs = ["parse_caddy"];
+          inputs = ["parse_caddy" "parse_docker"];
           endpoints = ["http://127.0.0.1:9428/insert/elasticsearch/"];
           mode = "bulk";
           api_version = "v8";
           request.headers = {
             AccountID = "0";
             ProjectID = "0";
-            VL-Stream-Fields = "host,logger";
+            VL-Stream-Fields = "host,logger,container_name";
           };
         };
         sinks.victoriametrics = {
