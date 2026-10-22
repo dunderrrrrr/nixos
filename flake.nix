@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # vector 0.59.0 fails to build on current unstable (deprecation lint with newer rustc)
+    nixpkgs-vector.url = "github:NixOS/nixpkgs/6774f7bc253789b113a4f39285dc0fa100abeacc";
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +52,7 @@
     };
     nixosConfigurations.nixos-blocket = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
         ./hosts/nixos-blocket/configuration.nix
         ./hosts/_shared_configs/config.nix

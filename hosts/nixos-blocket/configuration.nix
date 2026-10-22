@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   blocketapiProjectRoot = "/home/blocket/blocket-api.se";
@@ -54,6 +55,8 @@ in {
 
     vector = {
       enable = true;
+      # TODO: drop once vector builds on unstable again
+      package = inputs.nixpkgs-vector.legacyPackages.${pkgs.stdenv.hostPlatform.system}.vector;
       settings = {
         ## Host metrics
         sources.host_metrics = {
