@@ -33,6 +33,7 @@ in {
   ];
 
   services.tailscale.enable = true;
+  services.resolved.enable = true;
   virtualisation.docker.enable = true;
 
   time.timeZone = "Europe/Stockholm";
