@@ -38,14 +38,12 @@
           }
 
           @api path /v1* /swagger*
-          reverse_proxy @api http://127.0.0.1:8000
+          handle @api {
+            reverse_proxy http://127.0.0.1:8000
+          }
 
-          @docs path / /_/* /quickstart /python /endpoints /changelog /robots.txt /sitemap.xml /static/*
-          reverse_proxy @docs http://127.0.0.1:8001
-
-          handle_errors 404 {
-            rewrite * /404.html
-            file_server
+          handle {
+            reverse_proxy http://127.0.0.1:8001
           }
         '';
       };
