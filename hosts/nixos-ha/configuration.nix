@@ -101,19 +101,6 @@ in {
     };
   };
 
-  services.ntfy-sh = {
-    enable = true;
-    settings = {
-      base-url = "https://ntfy.dunderrrrrr.se";
-      listen-http = "127.0.0.1:2586";
-      behind-proxy = true;
-      proxy-forwarded-header = "CF-Connecting-IP";
-      auth-default-access = "deny-all";
-      enable-login = true;
-      require-login = true;
-    };
-  };
-
   services.caddy = {
     group = "users";
     enable = true;
