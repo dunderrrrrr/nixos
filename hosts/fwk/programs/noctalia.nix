@@ -29,10 +29,9 @@ in {
 
         start = [
           "session"
-          "launcher"
           "power_profile"
-          "wallpaper"
           "workspaces"
+          "alexander/screen-toolkit:widget"
           "dunderrrrrr/ostgotapendeln_next_train:bar"
           "active_window"
         ];
@@ -79,6 +78,24 @@ in {
       };
     };
   };
+  # Runtime tools for the alexander/screen-toolkit.
+  home.packages = with pkgs; [
+    slurp
+    hyprpicker
+    (tesseract.override {enableLanguages = ["eng" "swe"];})
+    imagemagick
+    zbar
+    qrencode
+    curl
+    jq
+    translate-shell
+    ffmpeg
+    wl-screenrec
+    wf-recorder
+    xdg-utils
+    pulseaudio # pactl
+  ];
+
   xdg.dataFile."noctalia/plugins/ostgotapendeln_next_train".source =
     ostgotapendeln-next-train;
 }

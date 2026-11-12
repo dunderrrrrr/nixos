@@ -66,6 +66,7 @@
   };
 
   programs.niri.enable = true;
+  programs.gpu-screen-recorder.enable = true;
   services.displayManager.defaultSession = lib.mkForce "niri";
 
   programs.thunar.enable = true;
@@ -159,6 +160,7 @@
       ty
       basedpyright
       sops
+      vlc
     ];
   };
 
