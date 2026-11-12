@@ -84,6 +84,8 @@
 
   console.keyMap = "sv-latin1";
 
+  environment.sessionVariables.EDITOR = "gram --wait";
+
   services.printing.enable = true;
   services.fwupd.enable = true; # https://wiki.nixos.org/wiki/Hardware/Framework/Laptop_13
   services.pulseaudio.enable = false;
