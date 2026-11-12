@@ -6,6 +6,10 @@
 
     settings = {
       prefer-no-csd = {};
+
+      # No IME running; without this GTK4 apps (ghostty) swallow dead keys like AltGr+¨ (~)
+      environment.GTK_IM_MODULE = "simple";
+
       input = {
         touchpad = {
           tap = {};
