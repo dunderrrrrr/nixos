@@ -34,6 +34,7 @@ in {
           "wallpaper"
           "workspaces"
           "dunderrrrrr/ostgotapendeln_next_train:bar"
+          "active_window"
         ];
         center = [
           "date"
