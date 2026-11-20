@@ -45,13 +45,9 @@ in {
           "ram"
           "network_rx"
           "network_tx"
-          "spacer"
           "network"
           "bluetooth"
           "volume"
-          "spacer"
-          "notifications"
-          "tray"
           "battery"
         ];
       };
