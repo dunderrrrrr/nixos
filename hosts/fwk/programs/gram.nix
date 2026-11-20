@@ -62,6 +62,10 @@
     features.edit_prediction_provider = "none";
 
     excerpt_context_lines = 5;
+
+    file_types = {
+      HTML = ["*.html.dj"];
+    };
   };
 
   home.file.".config/gram/keymap.jsonc".text = builtins.toJSON [
