@@ -97,9 +97,9 @@
       prefix = "type_checking";
       body = [
         "from __future__ import annotations"
-        "from typing import TYPE_CHECKING"
+        "import typing as t"
         ""
-        "if TYPE_CHECKING:"
+        "if t.TYPE_CHECKING:"
         "    "
       ];
     };
